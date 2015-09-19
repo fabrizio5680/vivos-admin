@@ -2,7 +2,7 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
     <application>${app.id}</application>
     <version>${app.version}</version>
-    <module>app</module>
+    <module>admin</module>
     <threadsafe>true</threadsafe>
   <public-root>/static</public-root>
   <static-files>
