@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <application>${app.id}</application>
+    <version>${app.version}</version>
+    <module>app</module>
+    <threadsafe>true</threadsafe>
+  <public-root>/static</public-root>
+  <static-files>
+    <include path="/**.png"  expiration="1s" />
+    <include path="/**.jpg"  expiration="1s" />
+    <include path="/**.js" expiration="1s">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+    <include path="/**.css" />
+
+    <include path="/**.otf">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.woff2">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.woff">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.tff">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.ttf">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.eot">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.html" expiration="1s">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+    <include path="/**.svg">
+      <http-header name="Access-Control-Allow-Origin" value="*" />
+    </include>
+
+    <include path="/**.json"  expiration="1s" />
+    <include path="/**.ico" />
+    <include path="/**.pdf" />
+
+    <exclude path="/**index.html" />
+
+  </static-files>
+    <system-properties>
+        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    </system-properties>
+</appengine-web-app>

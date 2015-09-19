@@ -1,0 +1,18 @@
+<div class="clearfix"></div>
+<div class="fade-ng enter-button animated"
+     ng-show="okButton"
+     ng-class="{ flash: animate }"
+     ng-click="submit($event, vModel)" ng-hide="hideOkButton">
+
+    <a ng-show="okButtonText" class="btn btn-warning btn-lg" role="button">
+        <span class="glyphicon glyphicon-ok"></span>
+        {{ okButtonText }}
+    </a>
+
+    <a ng-hide="okButtonText" class="btn btn-warning btn-lg" role="button">
+        <span class="glyphicon glyphicon-ok"></span>
+        Ok
+    </a>
+
+    <span>press <b>ENTER</b></span>
+</div>

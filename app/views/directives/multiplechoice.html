@@ -1,0 +1,39 @@
+<div class="form">
+  <ul class="questions">
+    <li class="list required">
+      <div class="wrapper">
+        <div class="pre-question">{{question.pretext}}</div>
+
+        <div class="question"><span>{{question.question}}</span></div>
+        <div class="post-question">{{question.posttext}}</div>
+        <div class="content">
+          <div class="content-wrapper">
+            <ul class="container-options">
+              <li ng-repeat="c in question.type.attributes.ANSWERS"
+                  ng-click="onUserClick($event, c)"
+                  class="content-option option{{$index}}"
+                  ng-class="{ selected: c.key === activeKey }">
+                <a>
+
+                  <input type="hidden" name="value" ng-model="vModel" value="{{c.alt}}">
+                  <div class="tick-wrapper"></div>
+                  <span class="tick"></span>
+                  <div class="label">
+                    <div class="letter" ng-class="{ active: c.key === activeKey }">
+                      <span>{{c.key.toUpperCase()}}</span>
+                    </div>
+                    <div class="caption text-center">
+                      <strong>{{c.title}}<br> {{c.subtitle}}</strong>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </li>
+    <div ng-include="'/views/directives/okbutton.html'"></div>
+  </ul>
+</div>

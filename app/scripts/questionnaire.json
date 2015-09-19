@@ -1,0 +1,1340 @@
+[
+  {
+    "id": 2,
+    "question": "First we need to know the BASIC DETAILS for this position.",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": []
+      }
+    },
+    "followingquestions": "0:3"
+  },
+  {
+    "id": 3,
+    "ref": "C-09",
+    "question": "What is the title for this position? [[HQLocation]]",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "SHORT_TEXT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:4",
+    "followingquestionsold": 4,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 4,
+    "ref": "C-10",
+    "question": "Is this position located at the company HQ in {{HQLocation}}?",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "BOOLEAN",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Yes"
+          },
+          {
+            "alt": 2,
+            "title": "No"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "1:5,2:7",
+    "followingquestionsold": "5,7",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 5,
+    "ref": "C-11",
+    "question": "Which of the company's activities is this position for?",
+    "questiongroup": "Basic Details",
+    "posttext": "Select as many as required...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Answers from C-05"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "4",
+    "followingquestions": "1:8",
+    "followingquestionsold": "6,8",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 6,
+    "ref": "C-12",
+    "question": "What department is this position a part of?",
+    "questiongroup": "Basic Details",
+    "posttext": "Select as many as required...",
+    "type": {
+      "type": "SHORT_TEXT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:10",
+    "followingquestionsold": 10,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 7,
+    "ref": "C-13",
+    "question": "Please select the location for this vacancy.",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "SHORT_TEXT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "4",
+    "followingquestions": "2:5",
+    "followingquestionsold": 5,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 8,
+    "ref": "C-14",
+    "question": "What department is this position for?",
+    "questiongroup": "Basic Details",
+    "posttext": "Select the department for this position from the list below, or add a new department.",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "maxnoofselections": 1,
+    "otheroption": "Other",
+    "requiredanswers": "0",
+    "followingquestions": "0:10",
+    "followingquestionsold": 10,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 9,
+    "ref": "C-16",
+    "question": "What is the ideal start date?",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "DATE_PICKER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "10",
+    "followingquestions": "1:14",
+    "followingquestionsold": 14,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 10,
+    "ref": "C-16a",
+    "question": "Please specify the employment type.",
+    "questiongroup": "Basic Details",
+    "posttext": "Select one...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Permanent"
+          },
+          {
+            "alt": 2,
+            "title": "Contract"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "maxnoofselections": 1,
+    "otheroption": "Other",
+    "requiredanswers": "0",
+    "followingquestions": "1:9,2:11",
+    "followingquestionsold": "9,11",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 11,
+    "ref": "C-17",
+    "question": "Please indicate the contract type.",
+    "questiongroup": "Basic Details",
+    "posttext": "Select one...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Fixed-Term"
+          },
+          {
+            "alt": 2,
+            "title": "Temporary"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "maxnoofselections": 1,
+    "otheroption": "Other",
+    "requiredanswers": "10",
+    "followingquestions": "2:12",
+    "followingquestionsold": 12,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 12,
+    "ref": "C-18",
+    "question": "How long will this contract be?",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "RANGE_SLIDER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:13",
+    "followingquestionsold": 13,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 13,
+    "ref": "C-19",
+    "question": "What is the ideal start date?",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "DATE_PICKER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:14",
+    "followingquestionsold": 14,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 14,
+    "ref": "C-20",
+    "question": "What is the annual salary for this position?",
+    "questiongroup": "Basic Details",
+    "type": {
+      "type": "RANGE_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": 20000
+          },
+          {
+            "alt": 2,
+            "title": 150000
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:15",
+    "followingquestionsold": 15,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 15,
+    "question": "Now we need to know the RESPONSIBILITIES for this position",
+    "questiongroup": "Responsibilities",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:16",
+    "followingquestionsold": 16,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 16,
+    "ref": "C-22",
+    "question": "Please indicate the responsibilities for this role",
+    "questiongroup": "Responsibilities",
+    "posttext": "Select as many as required...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Financial Accounting"
+          },
+          {
+            "alt": 2,
+            "title": "Audit"
+          },
+          {
+            "alt": 3,
+            "title": "Treasury"
+          },
+          {
+            "alt": 4,
+            "title": "Corporate Finance"
+          },
+          {
+            "alt": 5,
+            "title": "Management Accounting"
+          },
+          {
+            "alt": 6,
+            "title": "Tax"
+          },
+          {
+            "alt": 7,
+            "title": "Project Systems"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:17",
+    "followingquestionsold": 17,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 17,
+    "ref": "C-23",
+    "question": "Please indicate your preferred weighting of these responsibilities.",
+    "questiongroup": "Responsibilities",
+    "posttext": "Drag the sliders to indicate the time to be spent on each activity...",
+    "type": {
+      "type": "PERCENTAGE_SLIDER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:18",
+    "followingquestionsold": 18,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 18,
+    "question": "Now we need to know the preferences regarding QUALIFICATIONS for this position.",
+    "questiongroup": "Qualifications",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:19",
+    "followingquestionsold": 19,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 19,
+    "ref": "C-24",
+    "question": "Does this position require a professional qualification?",
+    "questiongroup": "Qualifications",
+    "posttext": "Select as many as are acceptable to you...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Qualified Accountant"
+          },
+          {
+            "alt": 2,
+            "title": "Tax Qualified"
+          },
+          {
+            "alt": 3,
+            "title": "Part-Qualified Accountant"
+          },
+          {
+            "alt": 4,
+            "title": "Accounting Technician"
+          },
+          {
+            "alt": 5,
+            "title": "No Qualification Required"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "1:20,2:25,3:28,4:30,5:33",
+    "followingquestionsold": "20,25,28,30",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 20,
+    "ref": "C-25",
+    "question": "Which qualification(s) are preferred for this role?",
+    "questiongroup": "Qualifications",
+    "posttext": "Select as many as are acceptable to you...",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "ACA"
+          },
+          {
+            "alt": 2,
+            "title": "ACCA"
+          },
+          {
+            "alt": 3,
+            "title": "CIMA"
+          },
+          {
+            "alt": 4,
+            "title": "CPA"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": 19,
+    "followingquestions": "0:21",
+    "followingquestionsold": 21,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 21,
+    "question": "Now we need to know the preferences regarding TRAINING for this position.",
+    "questiongroup": "Training",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "1:22,2:26,3:29",
+    "followingquestionsold": "22,26,29",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 22,
+    "ref": "C-26",
+    "question": "Please indicate your training preferences for this role...",
+    "questiongroup": "Training",
+    "posttext": "Select as many as are acceptable to you...",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Big 4 or Equivalent"
+          },
+          {
+            "alt": 2,
+            "title": "Other Practice trained"
+          },
+          {
+            "alt": 3,
+            "title": "Financial Services"
+          },
+          {
+            "alt": 4,
+            "title": "Industry trained"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:23",
+    "followingquestionsold": 23,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 23,
+    "ref": "C-27",
+    "question": "What is the desired minimum performance rating?",
+    "questiongroup": "Training",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Poor"
+          },
+          {
+            "alt": 2,
+            "title": "Satisfactory"
+          },
+          {
+            "alt": 3,
+            "title": "Good"
+          },
+          {
+            "alt": 4,
+            "title": "Very Good"
+          },
+          {
+            "alt": 5,
+            "title": "Excellent"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:24",
+    "followingquestionsold": 24,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 24,
+    "ref": "C-28",
+    "question": "How important is it for the candidate to have passed their ACA qualification first time?",
+    "questiongroup": "Training",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Unimportant"
+          },
+          {
+            "alt": 2,
+            "title": "Moderatley Important"
+          },
+          {
+            "alt": 3,
+            "title": "Very important"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:31",
+    "followingquestionsold": 31,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 25,
+    "ref": "C-29",
+    "question": "Which qualification(s) are preferred for this role?",
+    "questiongroup": "Qualifications",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "AITI"
+          },
+          {
+            "alt": 2,
+            "title": "CTA"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": 19,
+    "followingquestions": "0:21",
+    "followingquestionsold": 21,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 26,
+    "ref": "C-30",
+    "question": "Please indicate your training preferences for this role...",
+    "questiongroup": "Training",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Big 4 or Equivalent"
+          },
+          {
+            "alt": 2,
+            "title": "Other Practice trained"
+          },
+          {
+            "alt": 3,
+            "title": "Financial Services"
+          },
+          {
+            "alt": 4,
+            "title": "Industry trained"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:27",
+    "followingquestionsold": 27,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 27,
+    "ref": "C-31",
+    "question": "What is the desired minimum performance rating?",
+    "questiongroup": "Training",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Poor"
+          },
+          {
+            "alt": 2,
+            "title": "Satisfactory"
+          },
+          {
+            "alt": 3,
+            "title": "Good"
+          },
+          {
+            "alt": 4,
+            "title": "Very Good"
+          },
+          {
+            "alt": 5,
+            "title": "Excellent"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:31",
+    "followingquestionsold": 31,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 28,
+    "ref": "C-32",
+    "question": "Which qualification(s) are preferred for this role?",
+    "questiongroup": "Qualifications",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "ACA"
+          },
+          {
+            "alt": 2,
+            "title": "ACCA"
+          },
+          {
+            "alt": 3,
+            "title": "CIMA"
+          },
+          {
+            "alt": 4,
+            "title": "CPA"
+          },
+          {
+            "alt": 5,
+            "title": "AITI"
+          },
+          {
+            "alt": 6,
+            "title": "CTC"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": 19,
+    "followingquestions": "0:21",
+    "followingquestionsold": 21,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 29,
+    "ref": "C-33",
+    "question": "Please indicate your training preferences for this role...",
+    "questiongroup": "Training",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Big 4 or Equivalent"
+          },
+          {
+            "alt": 2,
+            "title": "Other Practice trained"
+          },
+          {
+            "alt": 3,
+            "title": "Financial Services"
+          },
+          {
+            "alt": 4,
+            "title": "Industry trained"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:31",
+    "followingquestionsold": 31,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 30,
+    "ref": "C-34",
+    "question": "Which qualification(s) are preferred for this role?",
+    "questiongroup": "Qualifications",
+    "type": {
+      "type": "MULTIPLE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "IATI"
+          },
+          {
+            "alt": 2,
+            "title": "CAT"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": 19,
+    "followingquestions": "0:31",
+    "followingquestionsold": 31,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 31,
+    "question": "Now we need to know the preferences regarding EXPERIENCE for this position.",
+    "questiongroup": "Experience",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:32,1:33",
+    "followingquestionsold": "32,33",
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 32,
+    "ref": "C-35",
+    "question": "How many years of PQE are desired for this position?",
+    "questiongroup": "Experience",
+    "type": {
+      "type": "RANGE_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": 0
+          },
+          {
+            "alt": 2,
+            "title": "10+"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:34",
+    "followingquestionsold": 34,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 33,
+    "ref": "C-36",
+    "question": "How many years of relevant experience are desired for this position?",
+    "questiongroup": "Experience",
+    "type": {
+      "type": "RANGE_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": 0
+          },
+          {
+            "alt": 2,
+            "title": "10+"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:34",
+    "followingquestionsold": 34,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 34,
+    "ref": "C-21",
+    "question": "Does this position involve people management?",
+    "questiongroup": "People Management",
+    "type": {
+      "type": "BOOLEAN",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Yes"
+          },
+          {
+            "alt": 2,
+            "title": "No"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:35",
+    "followingquestionsold": 35,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 35,
+    "ref": "C-37",
+    "question": "The size of the team to be managed is {x} people <br/> and {x} of them are qualified accountants",
+    "questiongroup": "People Management",
+    "type": {
+      "type": "NUMBER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:36",
+    "followingquestionsold": 36,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 36,
+    "question": "Now we need to know the preferences regarding SKILLS for this position.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:37",
+    "followingquestionsold": 37,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 37,
+    "ref": "C-39",
+    "question": "ERP systems.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Oracle"
+          },
+          {
+            "alt": 2,
+            "title": "Sage"
+          },
+          {
+            "alt": 3,
+            "title": "Other ERP"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:38",
+    "followingquestionsold": 38,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 38,
+    "ref": "C-40",
+    "question": "Accounting System.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "SAP"
+          },
+          {
+            "alt": 2,
+            "title": "Other Accounting Package"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:39",
+    "followingquestionsold": 39,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 39,
+    "ref": "C-41",
+    "question": "Consolidation Systems.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Hyperion"
+          },
+          {
+            "alt": 2,
+            "title": "Other System"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:40",
+    "followingquestionsold": 40,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 40,
+    "ref": "C-42",
+    "question": "Statutory Experience.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "US GAAP"
+          },
+          {
+            "alt": 2,
+            "title": "Other GAAP"
+          },
+          {
+            "alt": 3,
+            "title": "IFRS"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:41",
+    "followingquestionsold": 41,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 41,
+    "ref": "C-43",
+    "question": "Other Skills.",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "PICTURE_CHOICE",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Advanced Excel"
+          },
+          {
+            "alt": 2,
+            "title": "Highly developed financial modelling skills"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:42",
+    "followingquestionsold": 42,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 42,
+    "ref": "C-44",
+    "question": "Is there any language requirements for this position?",
+    "questiongroup": "Skills",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "English"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:43",
+    "followingquestionsold": 43,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 43,
+    "question": "Now we need to know the preferences regarding EDUCATION for this position.",
+    "questiongroup": "Education",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:44",
+    "followingquestionsold": 44,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 44,
+    "ref": "C-45",
+    "question": "Is there a minimum number of leaving cert points preferred for this position?",
+    "questiongroup": "Education",
+    "type": {
+      "type": "NUMBER",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "minvalue": 0,
+    "increments": 50,
+    "maxvalue": 600,
+    "requiredanswers": "0",
+    "followingquestions": "0:45",
+    "followingquestionsold": 45,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 45,
+    "ref": "C-46",
+    "question": "Is a degree prerequisite for this position?",
+    "questiongroup": "Education",
+    "type": {
+      "type": "BOOLEAN",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Yes"
+          },
+          {
+            "alt": 2,
+            "title": "No"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:46",
+    "followingquestionsold": 46,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 46,
+    "ref": "C-47",
+    "question": "Please specify the importance of degree results.",
+    "questiongroup": "Education",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Low"
+          },
+          {
+            "alt": 2,
+            "title": "Medium"
+          },
+          {
+            "alt": 3,
+            "title": "High"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:47",
+    "followingquestionsold": 47,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 47,
+    "question": "Now we have all the information we need. The last thing to do is to tell us how imprtant each decision you made is.",
+    "questiongroup": "Importance Weighting",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:48",
+    "followingquestionsold": 48,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 48,
+    "ref": "C-48",
+    "question": "Accountancy Qualification",
+    "questiongroup": "Importance Weighting",
+    "title": "SUMMARY",
+    "pretext": "Please prioritise the importance of your previoulsy selected answers",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Low"
+          },
+          {
+            "alt": 2,
+            "title": "Medium"
+          },
+          {
+            "alt": 3,
+            "title": "High"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:49",
+    "followingquestionsold": 49,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 49,
+    "question": "Experience",
+    "questiongroup": "Importance Weighting",
+    "pretext": "Please prioritise the importance of your previoulsy selected answers",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Low"
+          },
+          {
+            "alt": 2,
+            "title": "Medium"
+          },
+          {
+            "alt": 3,
+            "title": "High"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:50",
+    "followingquestionsold": 50,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 50,
+    "question": "Skills",
+    "questiongroup": "Importance Weighting",
+    "pretext": "Please prioritise the importance of your previoulsy selected answers",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Low"
+          },
+          {
+            "alt": 2,
+            "title": "Medium"
+          },
+          {
+            "alt": 3,
+            "title": "High"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:51",
+    "followingquestionsold": 51,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 51,
+    "question": "Education",
+    "questiongroup": "Importance Weighting",
+    "pretext": "Please prioritise the importance of your previoulsy selected answers",
+    "type": {
+      "type": "CONTINUUM_SLIDER",
+      "attributes": {
+        "ANSWERS": [
+          {
+            "alt": 1,
+            "title": "Low"
+          },
+          {
+            "alt": 2,
+            "title": "Medium"
+          },
+          {
+            "alt": 3,
+            "title": "High"
+          }
+        ],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "followingquestions": "0:52",
+    "followingquestionsold": 52,
+    "operation": "MAP_IT",
+    "questionairre": "This"
+  },
+  {
+    "id": 52,
+    "question": "That's it, you're finished! Now, where do you want to post this vacancy?",
+    "questiongroup": "You're finished!",
+    "type": {
+      "type": "STATEMENT",
+      "attributes": {
+        "ANSWERS": [],
+        "REQUIRED": true
+      }
+    },
+    "requiredanswers": "0",
+    "operation": "MAP_IT"
+  }
+]

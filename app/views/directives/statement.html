@@ -1,0 +1,15 @@
+<div class="form">
+  <ul class="questions">
+    <li class="list required">
+      <div class="wrapper">
+        <div class="pre-question">{{question.pretext}}</div>
+
+        <div class="question">
+          <span>{{question.question}}</span>
+        </div>
+        <div class="post-question">{{question.posttext}}</div>
+      </div>
+    </li>
+    <div ng-include="'/views/directives/okbutton.html'"></div>
+  </ul>
+</div>

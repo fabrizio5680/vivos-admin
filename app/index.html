@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link href ="styles/bootstrap.min.css" rel = "stylesheet">
+  <link href ="styles/rzslider.min.css" rel = "stylesheet">
+  <link href ="styles/style.css" rel = "stylesheet">
+
+  <style>
+    form .alert {display: none;}
+  </style>
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+
+    .ng-hide:not(.ng-hide-animate), {
+      display: none !important;
+    }
+  </style>
+</head>
+<body ng-app="surveyTreeModuleApp" ng-cloak>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+
+<div ng-include="'/views/layout/header.html'"></div>
+
+
+  <!--FORM START-->
+  <div class="main-container" ng-view>
+
+  </div>
+  <!--FORM END-->
+<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="main"></span>
+<!--<span style="z-index:9999999999;display:block;position: fixed;right: 10px;top: 72px">ID: <span ng-bind="question.id"></span></span>-->
+<div ng-include="'/views/layout/footer.html'"></div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+  }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51079990-1');
+  ga('send', 'pageview');
+
+</script>
+
+<script>
+  // Include the UserVoice JavaScript SDK (only needed once on a page)
+  UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/PBVTQFmJJE89LyUrtplFw.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+  //
+  // UserVoice Javascript SDK developer documentation:
+  // https://www.uservoice.com/o/javascript-sdk
+  //
+
+  // Set colors
+  UserVoice.push(['set', {
+    accent_color: '#e2753a',
+    trigger_color: 'white',
+    trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+  }]);
+
+  // Identify the user and pass traits
+  // To enable, replace sample data with actual user traits and uncomment the line
+  UserVoice.push(['identify', {
+    //email:      'john.doe@example.com', // User’s email address
+    //name:       'John Doe', // User’s real name
+    //created_at: 1364406966, // Unix timestamp for the date the user signed up
+    //id:         123, // Optional: Unique id of the user (if set, this should not change)
+    //type:       'Owner', // Optional: segment your users by type
+    //account: {
+    //  id:           123, // Optional: associate multiple users with a single account
+    //  name:         'Acme, Co.', // Account name
+    //  created_at:   1364406966, // Unix timestamp for the date the account was created
+    //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+    //  ltv:          1495.00, // Decimal; lifetime value of the account
+    //  plan:         'Enhanced' // Plan name for the account
+    //}
+  }]);
+
+  // Add default trigger to the bottom-right corner of the window:
+  UserVoice.push(['addTrigger', {mode: 'contact', trigger_position: 'bottom-right' }]);
+
+  // Or, use your own custom trigger:
+  //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+  // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+  UserVoice.push(['autoprompt', {}]);
+</script>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angucomplete/angucomplete.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-multirange-slider/dist/multirange-slider.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/spin.js/spin.js"></script>
+<script src="bower_components/angular-spinner/angular-spinner.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-upload/angular-upload.js"></script>
+<script src="bower_components/angularjs-slider/rzslider.js"></script>
+<script src="bower_components/eydis-gapi/eydis-gapi-signin.js"></script>
+<script src="bower_components/eydis-gapi/eydis-gapi.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/ng-fab-form/dist/ng-fab-form.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/services/api.js"></script>
+<script src="scripts/services/api_client.js"></script>
+<script src="scripts/services/templates.js"></script>
+<script src="scripts/services/utils.js"></script>
+<script src="scripts/controllers/results.js"></script>
+<script src="scripts/controllers/register.js"></script>
+<script src="scripts/controllers/welcome.js"></script>
+<script src="scripts/directives/file_upload.js"></script>
+<script src="scripts/directives/validation.js"></script>
+<script src="scripts/controllers/profile.js"></script>
+<!-- endbuild -->
+<script src="https://apis.google.com/js/client.js?onload=_gapi_load_callback"> </script>
+<script src="scripts/polyfiller.js"></script>
+</body>
+</html>

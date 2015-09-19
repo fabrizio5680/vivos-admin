@@ -1,0 +1,4 @@
+<div ng-hide="answers" class="ng-hide">Loading...</div>
+<div ng-repeat="a in answers track by $index">
+  Question: <strong ng-bind="a.id"></strong> - <span>{{ a.answers[0].alt || a.answers[0].actual }}</span><br>
+</div>

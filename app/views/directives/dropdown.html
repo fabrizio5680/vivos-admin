@@ -1,0 +1,29 @@
+<div class="form">
+    <ul class="questions">
+        <li class="list required">
+            <div class="wrapper">
+                <div class="pre-question">{{question.pretext}}</div>
+
+                <div class="question"><span>{{question.question}}</span></div>
+              <div class="post-question">{{question.posttext}}</div>
+                <div class="content">
+                    <div class="content-wrapper">
+                        <angucomplete id="ex1"
+                                      placeholder="{{vPlaceholder}}"
+                                      pause="100"
+                                      selectedobject="vModel"
+                                      localdata="question.type.attributes.ANSWERS"
+                                      searchfields="title"
+                                      titlefield="title"
+                                      minlength="1"
+                                      inputclass="form-control form-control-small">
+                        </angucomplete>
+
+                    </div>
+                </div>
+              <div class="post-question">{{question.posttext}}</div>
+            </div>
+        </li>
+        <div ng-include="'/views/directives/okbutton.html'"></div>
+    </ul>
+</div>

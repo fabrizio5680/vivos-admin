@@ -1,0 +1,20 @@
+
+<div class="fade-ng sidebar" ng-show="formLayoutAnimate">
+    <div class="navbar">
+        <a class="navbar-brand" ng-href="/">
+            <img src="images/logo-vivos.png"></a>
+    </div>
+    <div class="block">
+        <div class="v-welcome-block">
+            <!--Hi, <span ng-bind="user.email"></span>-->
+        </div>
+        <div class="centered">
+            <ul class="nav-steps ng-hide" ng-show="groups">
+
+                <li ng-repeat="g in groups track by $index" ng-class="{ active: question.questiongroup === g }">
+                    <a >{{g}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

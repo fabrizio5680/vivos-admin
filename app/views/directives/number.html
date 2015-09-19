@@ -1,0 +1,37 @@
+<div class="form animation">
+    <ul class="questions">
+        <li class="numberfield active required">
+            <div class="wrapper">
+                <div class="pre-question">{{question.pretext}}</div>
+
+                <div class="question"><span>{{question.question}}</span></div>
+              <div class="post-question">{{question.posttext}}</div>
+                <div class="content-wrapper">
+                    <div class="container-control">
+                        <div class="v-currency" ng-bind="money.currency"></div>
+                        <div class="control-spinner">
+                            <span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
+
+                                <input type="number"
+                                       ng-model="vModel"
+                                       name=""
+                                       min="0"
+                                       max="100"
+                                       required=""
+                                       ng-required=""
+                                       ng-minlength="0"
+                                       ng-maxlength="100"
+                                       ng-pattern=""
+                                       ng-change="onNumberChange()">
+
+                            </span>
+                        </div>
+                        <div class="v-currency" ng-bind="money.zeros"></div>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+        <div ng-include="'/views/directives/okbutton.html'"></div>
+    </ul>
+</div>

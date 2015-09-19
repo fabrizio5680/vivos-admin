@@ -1,0 +1,22 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+          <tr ng-repeat="(key, value) in profile track by $index">
+            <td ng-bind="key"></td>
+            <td>
+              <p ng-if="key !== '34' && key !== '35' && key !== 'email'" ng-repeat="v in value track by $index" ng-bind="v"></p>
+              <img style="max-width: 300px; width: 100%" ng-if="key === '35'"  ng-src="{{value[0]}}">
+              <a ng-if="key === '34'" href="{{value[0]}}">Link to CV</a>
+              <a ng-if="key === 'email'" href="{{'mailto:' + value}}" ng-bind="value"></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="form">
+  <ul class="questions">
+    <li class="list required">
+      <div class="wrapper">
+        <div class="pre-question">{{question.pretext}}</div>
+
+        <div class="question"><span ng-bind-html-unsafe="question.question"></span></div>
+        <div class="post-question"><span ng-bind-html-unsafe="question.posttext"></span></div>
+        <div class="content">
+          <div class="content-wrapper">
+            <input type="text" ng-model="vModel" placeholder="Enter here" class="v-text-inputs v-short-text" autofocus>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

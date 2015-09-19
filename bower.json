@@ -1,0 +1,30 @@
+{
+  "name": "survey-tree-module",
+  "version": "0.0.0",
+  "dependencies": {
+    "angucomplete": "https://github.com/darylrowland/angucomplete.git",
+    "angular": "^1.3.0",
+    "angular-animate": "^1.3.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.5",
+    "angular-local-storage": "~0.2.2",
+    "angular-multirange-slider": "~1.1.1",
+    "angular-route": "~1.3.0",
+    "angular-spinner": "~0.7.0",
+    "angular-touch": "^1.3.0",
+    "angular-upload": "~1.0.12",
+    "angularjs-slider": "~0.1.29",
+    "animate.css": "~3.3.0",
+    "eydis-gapi": "git@github.com:fabrizio5680/Eydis-GAPI.git#~1.1.0",
+    "jquery": "~2.1.4",
+    "moment": "~2.10.6",
+    "ng-fab-form": "~1.2.11"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.3.0"
+  },
+  "appPath": "app",
+  "moduleName": "surveyTreeModuleApp",
+  "resolutions": {
+    "angular": "1.4.6"
+  }
+}

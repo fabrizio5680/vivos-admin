@@ -1,0 +1,19 @@
+<div class="form">
+  <ul class="questions">
+    <li class="list required">
+      <div class="wrapper">
+        <div class="pre-question">{{question.pretext}}</div>
+
+        <div class="question"><span>{{question.question}}</span></div>
+        <div class="post-question"><span ng-bind-html="question.posttext"></span></div>
+        <div class="content">
+          <div class="content-wrapper">
+            <input type="text" ng-model="vModel" placeholder="Website" class="v-text-inputs v-short-text" autofocus>
+          </div>
+        </div>
+
+      </div>
+    </li>
+    <div ng-include="'/views/directives/okbutton.html'"></div>
+  </ul>
+</div>
