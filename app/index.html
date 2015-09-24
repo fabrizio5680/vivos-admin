@@ -8,11 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-  <link href ="styles/bootstrap.min.css" rel = "stylesheet">
-  <link href ="styles/rzslider.min.css" rel = "stylesheet">
-  <link href ="styles/style.css" rel = "stylesheet">
-
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
+  <link rel="stylesheet" href="bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="bower_components/angular-multirange-slider/dist/multirange-slider.css" />
+  <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
   <style>
     form .alert {display: none;}
   </style>
@@ -26,31 +32,50 @@
     }
   </style>
 </head>
-<body ng-app="surveyTreeModuleApp" ng-cloak>
+<body ng-app="surveyTreeModuleApp" ng-cloak layout="column">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 
-
-<div ng-include="'/views/layout/header.html'"></div>
-
-
-  <!--FORM START-->
-  <div class="main-container" ng-view>
-
+<md-toolbar layout="row">
+  <div class="md-toolbar-tools">
+    <img src="images/logo-vivos.png">
   </div>
-  <!--FORM END-->
-<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="main"></span>
-<!--<span style="z-index:9999999999;display:block;position: fixed;right: 10px;top: 72px">ID: <span ng-bind="question.id"></span></span>-->
-<div ng-include="'/views/layout/footer.html'"></div>
+</md-toolbar>
+
+<div layout="row" flex>
+  <div layout="column" flex id="content">
+    <md-content ng-view layout="column" flex class="md-padding">
+
+    </md-content>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="ProfileCtrl" layout-padding>
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-sidenav-focus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+    </md-sidenav>
+  </div>
+</div>
+
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-    (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+            (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+          r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
   }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-51079990-1');
@@ -108,9 +133,23 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angucomplete/angucomplete.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
+<script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
 <script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-multirange-slider/dist/multirange-slider.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/spin.js/spin.js"></script>
 <script src="bower_components/angular-spinner/angular-spinner.js"></script>
