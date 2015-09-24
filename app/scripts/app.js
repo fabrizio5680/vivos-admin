@@ -94,8 +94,6 @@ angular
       } catch (ignore){
         $location.url('/');
       }
-
-      window.webshims.polyfill();
     };
 
     init();
