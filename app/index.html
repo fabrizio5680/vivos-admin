@@ -10,26 +10,56 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
-  <link rel="stylesheet" href="bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-multirange-slider/dist/multirange-slider.css" />
-  <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
-  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <style>
     form .alert {display: none;}
+    table[md-data-table] > thead > tr > th > div[trim] {
+      min-width: 100px!important;
+    }
+    md-sidenav.md-locked-open {
+      min-width: 200px;
+      width: 200px;
+      max-width: 200px;
+    }
+    md-sidenav.md-sidenav-right {
+      min-width: 500px;
+      width: 500px;
+      max-width: 500px;
+    }
+    md-sidenav.md-locked-open {
+      min-width: 200px;
+      width: 200px;
+      max-width: 200px;
+    }
   </style>
   <style>
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
       display: none !important;
     }
 
+    .menu-toggle-list {
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-toggle-list button {
+      width: 100%;
+      margin: 0 0;
+      padding: 5px 0;
+    }
     .ng-hide:not(.ng-hide-animate), {
       display: none !important;
+    }
+
+    table[md-data-table]>thead:not([md-table-progress])>tr>th[trim] {
+      min-width: 100px;
+    }
+
+    table[md-data-table][md-row-select]>tbody>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>tfoot>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>thead:not([md-table-progress])>tr>th:nth-child(n+3):nth-last-child(n+2) {
+      padding: 0 10px;
     }
   </style>
 </head>
@@ -44,31 +74,43 @@
     <img src="images/logo-vivos.png">
   </div>
 </md-toolbar>
-
 <div layout="row" flex>
+  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <ul class="menu-toggle-list">
+      <li>
+        <md-button>Vacancies</md-button>
+      </li>
+      <li>
+        <md-button>Candidates</md-button>
+      </li>
+      <li>
+        <md-button>Recruiters</md-button>
+      </li>
+    </ul>
+  </md-sidenav>
   <div layout="column" flex id="content">
-    <md-content ng-view layout="column" flex class="md-padding">
-
+    <md-content layout="column" flex class="md-padding">
+      <md-card ng-view>
     </md-content>
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+  </div>
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <div ng-controller="ProfileCtrl">
       <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+        <h1 class="md-toolbar-tools">{{profile.firstName}}</h1>
       </md-toolbar>
-      <md-content ng-controller="ProfileCtrl" layout-padding>
-        <form>
-          <md-input-container>
-            <label for="testInput">Test input</label>
-            <input type="text" id="testInput"
-                   ng-model="data" md-sidenav-focus>
-          </md-input-container>
-        </form>
+      <md-content layout-padding layout="column" flex>
+        <div layout="row" ng-repeat="(key, value) in profile">
+          <div flex="50" ng-bind="key"></div><div flex="50" style="text-align: right" ng-bind="value"></div>
+        </div>
         <md-button ng-click="close()" class="md-primary">
-          Close Sidenav Right
+          Close
         </md-button>
       </md-content>
-    </md-sidenav>
-  </div>
+    </div>
+  </md-sidenav>
 </div>
+
+
 
 
 
@@ -132,37 +174,18 @@
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angucomplete/angucomplete.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/colreorder/angular-datatables.colreorder.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/colvis/angular-datatables.colvis.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.js"></script>
-<script src="bower_components/angular-datatables/dist/plugins/tabletools/angular-datatables.tabletools.js"></script>
-<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
-<script src="bower_components/angular-multirange-slider/dist/multirange-slider.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/spin.js/spin.js"></script>
-<script src="bower_components/angular-spinner/angular-spinner.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-upload/angular-upload.js"></script>
-<script src="bower_components/angularjs-slider/rzslider.js"></script>
 <script src="bower_components/eydis-gapi/eydis-gapi-signin.js"></script>
 <script src="bower_components/eydis-gapi/eydis-gapi.js"></script>
 <script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<script src="bower_components/ng-fab-form/dist/ng-fab-form.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -179,6 +202,7 @@
 <script src="scripts/directives/file_upload.js"></script>
 <script src="scripts/directives/validation.js"></script>
 <script src="scripts/controllers/profile.js"></script>
+<script src="scripts/services/profile.js"></script>
 <!-- endbuild -->
 <script src="https://apis.google.com/js/client.js?onload=_gapi_load_callback"> </script>
 <script src="scripts/polyfiller.js"></script>

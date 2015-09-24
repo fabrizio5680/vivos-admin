@@ -8,10 +8,10 @@
  * Controller of the surveyTreeModuleApp
  */
 angular.module('surveyTreeModuleApp')
-  .controller('ProfileCtrl', function ($scope, $rootScope, $routeParams, apiClient) {
+  .controller('ProfileCtrl', function ($scope, $rootScope, $routeParams, profileHandler, $mdSidenav) {
 
     var getUrlPath = function () {
-      return $routeParams.profileId;
+      return profileHandler.getProfile();
     };
 
     $scope.close = function () {
@@ -22,26 +22,27 @@ angular.module('surveyTreeModuleApp')
     };
 
     var init = function () {
-      $rootScope.formLayout = false;
-      $rootScope.formLayoutAnimate = false;
-
-      var profileId = getUrlPath();
-      var map = {};
-
-      apiClient.getProfile({questionnareId: 15, userId: profileId}).then(function (response) {
-        angular.forEach(response.result, function (value, key) {
-          try {
-            map[key] = JSON.parse(value);
-          } catch (e) {
-            map[key] = value;
-          }
-        });
-        delete map.id;
-        delete map.kind;
-        delete map.etag;
-        $scope.profile = map;
-      });
+      //$rootScope.formLayout = false;
+      //$rootScope.formLayoutAnimate = false;
+      //
+      //var profileId = getUrlPath();
+      //var map = {};
+      //
+      //apiClient.getProfile({questionnareId: 15, userId: profileId}).then(function (response) {
+      //  angular.forEach(response.result, function (value, key) {
+      //    try {
+      //      map[key] = JSON.parse(value);
+      //    } catch (e) {
+      //      map[key] = value;
+      //    }
+      //  });
+      //  delete map.id;
+      //  delete map.kind;
+      //  delete map.etag;
+        $scope.profile = getUrlPath();
+      //});
 
     };
-    init();
+
+    $scope.$on('toggleOpen', init);
   });

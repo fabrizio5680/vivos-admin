@@ -7,6 +7,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: #5f5e5e;
 }
+
+table[md-data-table] > thead > tr > th > div[trim] {
+    min-width: 100px!important;
+}
+
 .main-container {
   padding-bottom: 80px;
 }
