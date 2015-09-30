@@ -14,10 +14,10 @@
       <!--<th ng-repeat="column in columns" ng-attr-order-by="{{column.orderBy}}" ng-attr-numeric="{{column.numeric}}" ng-attr-unit="{{column.unit}}" name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-trim="{{column.trim}}"></th>-->
       <th name="Id" order-by="id"></th>
       <th name="Profile"></th>
-      <th name="Status" order-by="status"></th>
-      <th name="First Name" order-by="firstName"></th>
-      <th name="Family Name" order-by="familyName"></th>
-      <th name="Our Rating" order-by="ourRating"></th>
+      <th name="Status" order-by="email"></th>
+      <th name="First Name" order-by="[1][0]"></th>
+      <th name="Family Name" order-by="[2][0]"></th>
+      <th name="Our Rating" order-by="[3][0]"></th>
       <th name="Articleship" order-by="articleship"></th>
       <th name="Accountancy Qualification Year" order-by="accountancyQualificationYearQualify"></th>
       <th name="Department" order-by="department"></th>
@@ -28,7 +28,7 @@
       <th name="Primary Clients" order-by="primaryClients"></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody>you
     <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
       <td>
         {{ person.id }}
