@@ -12,6 +12,7 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-rateit/dist/ng-rateit.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <style>
@@ -99,16 +100,18 @@
         <h1 class="md-toolbar-tools">{{profile.firstName}}</h1>
       </md-toolbar>
       <md-content layout-padding layout="column" flex>
-        <div layout="row" ng-repeat="(key, value) in profile">
-          <div layout="row" flex="20" layout-align="start center" ng-bind="key"></div>
-          <div layout="row" flex="80" layout-align="end center">
-            <p ng-if="key !== '5' && key !== '39' && key !== '34' && key !== '35' && key !== 'email'" ng-repeat="v in value track by $index" ng-bind="v"></p>
-            <div ng-if="key == '5' || key == '39' && key !== 'email'" ng-repeat="v in value track by $index">
-              <p ng-if="key == '5' || key == '39' && key !== 'email'" ng-repeat="itm in v track by $index" ng-bind="itm"></p>
+        <div layout="column" ng-repeat="p in profile">
+          <div layout="row" flex="100" layout-align="start center" class="title">
+            <h4 ng-bind="p.question"></h4>
+          </div>
+          <div layout="row" flex="100" layout-align="start center" class="content">
+            <p ng-if="p.id !== '5' && p.id !== '39' && p.id !== '34' && p.id !== '35' && p.id !== 'email'" ng-bind="p.answer"></p>
+            <div ng-if="p.id == '5' || p.id == '39' && p.id !== 'email'">
+              <p ng-repeat="itm in p.answer track by $index" ng-bind="itm"></p>
             </div>
-            <img style="max-width: 300px; width: 100%" ng-if="key === '35'"  ng-src="{{value[0]}}">
-            <a ng-if="key === '34'" href="{{value[0]}}">Link to CV</a>
-            <a ng-if="key === 'email'" href="{{'mailto:' + value}}" ng-bind="value"></a>
+            <img style="max-width: 300px; width: 100%" ng-if="p.id === '35'"  ng-src="{{p.answer}}">
+            <a ng-if="p.id === '34'" href="{{p.answer}}">Link to CV</a>
+            <a ng-if="p.id === 'email'" href="{{'mailto:' + p}}" ng-bind="value"></a>
           </div>
         </div>
         <!--<div layout="row" ng-repeat="(key, value) in profile">-->
@@ -191,6 +194,7 @@
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+<script src="bower_components/angular-rateit/dist/ng-rateit.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>

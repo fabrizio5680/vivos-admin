@@ -16,6 +16,7 @@ angular
     'ngAnimate',
     'ngTouch',
     'ngRoute',
+    'ngRateIt',
     'ngResource',
     'ngMaterial',
     'md.data.table',
@@ -25,8 +26,8 @@ angular
 
 
   .config(function ($gapiProvider, localStorageServiceProvider, $locationProvider, $routeProvider, $mdThemingProvider) {
-    //$gapiProvider.api_base = 'https://api-dot-vivosme.appspot.com/_ah/api';
-    $gapiProvider.api_base = 'https://api-dot-vivos-api-staging.appspot.com/_ah/api';
+    $gapiProvider.api_base = 'https://api-dot-vivosme.appspot.com/_ah/api';
+    //$gapiProvider.api_base = 'https://api-dot-vivos-api-staging.appspot.com/_ah/api';
 
 
     $mdThemingProvider.theme('default')

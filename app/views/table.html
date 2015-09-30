@@ -11,48 +11,23 @@
   <table md-data-table md-row-select="selected" md-progress="deferred">
     <thead md-order="query.order" md-trigger="onorderchange">
     <tr>
-      <!--<th ng-repeat="column in columns" ng-attr-order-by="{{column.orderBy}}" ng-attr-numeric="{{column.numeric}}" ng-attr-unit="{{column.unit}}" name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-trim="{{column.trim}}"></th>-->
-      <th name="Id" order-by="id"></th>
-      <th name="Profile"></th>
-      <th name="Status" order-by="email"></th>
-      <th name="First Name" order-by="[1][0]"></th>
-      <th name="Family Name" order-by="[2][0]"></th>
-      <th name="Our Rating" order-by="[3][0]"></th>
-      <th name="Articleship" order-by="articleship"></th>
-      <th name="Accountancy Qualification Year" order-by="accountancyQualificationYearQualify"></th>
-      <th name="Department" order-by="department"></th>
-      <th name="Accountancy Qualification Attempts" order-by="accountancyQualificationAttempts"></th>
-      <th name="Education High School" order-by="educationHighschool"></th>
-      <th name="Education Degree" order-by="educationDegree"></th>
-      <th name="Performance Rating" order-by="performanceRating"></th>
-      <th name="Primary Clients" order-by="primaryClients"></th>
+      <th ng-repeat="column in columns" ng-attr-order-by="{{column.orderBy}}" name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-trim="{{column.trim}}"></th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
       <td>
-        {{ person.id }}
-      </td>
-      <td>
         <md-button title="Launch Profile"
-                   ng-click="toggleRight(); setProfile(person)"
+                   ng-click="toggleRight(); setProfile(person.profile.value)"
                    aria-label="Profile"
                    class="md-icon-button launch">
           <md-icon md-svg-icon="/images/ic_account_circle_black_24px.svg" style="color: rgba(255,82,82,0.87);"></md-icon>
         </md-button>
       </td>
-      <td>{{ person.email }}</td>
-      <td>{{ person[1][0] }}</td>
-      <td>{{ person[2][0] }}</td>
-      <td>{{ person[3][0] }}</td>
-      <td>{{ person[4][0] }}</td>
-      <td>{{ person[5][0] }}</td>
-      <td>{{ person[6][0] }}</td>
-      <td>{{ person[7][0] }}</td>
-      <td>{{ person[8][0] }}</td>
-      <td>{{ person[9][0] }}</td>
-      <td>{{ person[10][0] }}</td>
-      <td>{{ person[11][0] }}</td>
+      <td ng-repeat="p in person" ng-if="p.id !== 'profile' && p.id !== 'id'">
+        <span ng-if="p.id !== 'suitabilityRating'">{{p.value}}</span>
+        <span ng-if="p.id === 'suitabilityRating'"><ng-rate-it step="0.5" ng-model="p.value"></ng-rate-it></span>
+      </td>
     </tr>
     </tbody>
   </table>
