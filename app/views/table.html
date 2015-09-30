@@ -28,7 +28,7 @@
       <th name="Primary Clients" order-by="primaryClients"></th>
     </tr>
     </thead>
-    <tbody>you
+    <tbody>
     <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
       <td>
         {{ person.id }}
