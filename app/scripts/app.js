@@ -26,7 +26,7 @@ angular
 
   .config(function ($gapiProvider, localStorageServiceProvider, $locationProvider, $routeProvider, $mdThemingProvider) {
     //$gapiProvider.api_base = 'https://api-dot-vivosme.appspot.com/_ah/api';
-    $gapiProvider.api_base = 'https://vivos-api-staging.appspot.com/_ah/api';
+    $gapiProvider.api_base = 'https://api-dot-vivos-api-staging.appspot.com/_ah/api';
 
 
     $mdThemingProvider.theme('default')
