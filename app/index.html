@@ -100,8 +100,17 @@
       </md-toolbar>
       <md-content layout-padding layout="column" flex>
         <div layout="row" ng-repeat="(key, value) in profile">
-          <div flex="50" ng-bind="key"></div><div flex="50" style="text-align: right" ng-bind="value"></div>
+          <div layout="row" flex="20" layout-align="start center" ng-bind="key"></div>
+          <div layout="row" flex="80" layout-align="end center">
+            <p ng-if="key !== '34' && key !== '35' && key !== 'email'" ng-repeat="v in value track by $index" ng-bind="v"></p>
+            <img style="max-width: 300px; width: 100%" ng-if="key === '35'"  ng-src="{{value[0]}}">
+            <a ng-if="key === '34'" href="{{value[0]}}">Link to CV</a>
+            <a ng-if="key === 'email'" href="{{'mailto:' + value}}" ng-bind="value"></a>
+          </div>
         </div>
+        <!--<div layout="row" ng-repeat="(key, value) in profile">-->
+          <!--<div flex="50" ng-bind="key"></div><div flex="50" style="text-align: right" ng-bind="value"></div>-->
+        <!--</div>-->
         <md-button ng-click="close()" class="md-primary">
           Close
         </md-button>

@@ -9,7 +9,7 @@ var json;
  */
 angular.module('surveyTreeModuleApp')
   .controller('MainCtrl', function ($scope, $rootScope, $timeout, localStorageService, utils, $location, $mdUtil,
-                                    $routeParams, $sce, $mdSidenav, $q, profileHandler) {
+                                    $routeParams, $sce, $mdSidenav, $q, profileHandler, apiClient) {
 
     var dateId = 4;
     var getUrlPath = function () {
@@ -71,7 +71,20 @@ angular.module('surveyTreeModuleApp')
         return d.promise;
       };
 
-      $scope.persons = json;
+      apiClient.getUsers({id:15}).then(function (users) {
+        angular.forEach(users.items, function (item) {
+          angular.forEach(item, function (itm, key) {
+            var i = null;
+            try {
+              if (key === '5' || key === '39') {
+                i = JSON.parse(itm[0]);
+                itm[0] = i;
+              }
+            } catch (e) {}
+          });
+        });
+        $scope.persons = users.items;
+      })
     };
 
     $scope.profile = function (id) {
