@@ -46,10 +46,10 @@ angular.module('surveyTreeModuleApp')
     };
 
 
-    $scope.showCV = function (ev, user) {
+    $scope.showCV = function (ev, profile) {
       try {
-        var cv = user[34].value;
-        var raw = user[34].value;
+        var cv = profile[34];
+        var raw = profile[34];
       } catch (e) {
 
       }
@@ -58,7 +58,7 @@ angular.module('surveyTreeModuleApp')
       iframe = '<iframe class="doc" src="' + cv + '"></iframe>';
 
       selectedUser.iframe = iframe;
-      selectedUser.firstName = user[2];
+      selectedUser.firstName = profile[2];
       selectedUser.download = raw;
 
       $mdDialog.show({
@@ -76,6 +76,7 @@ angular.module('surveyTreeModuleApp')
     };
 
     var init = function () {
+      $scope.profile = null;
       //$rootScope.formLayout = false;
       //$rootScope.formLayoutAnimate = false;
       //
@@ -93,17 +94,16 @@ angular.module('surveyTreeModuleApp')
       //  delete map.id;
       //  delete map.kind;
       //  delete map.etag;
-      var p = getUrlPath();
+      var user = getUrlPath();
 
 
-      apiClient.getProfile({userId: p.id, questionnareId: 15 }).then(function (profile) {
+      apiClient.getProfile({userId: user.id, questionnareId: 15 }).then(function (profile) {
+        var p = {};
         angular.forEach(profile, function (value, key) {
           try {
-            p[key].value = JSON.parse(value);
+            p[key] = JSON.parse(value);
           } catch (e) {
-            if (p[key] && p[key].value) {
-              p[key].value = value;
-            }
+            p[key] = angular.isArray(value) ? value[0] : value;
           }
         });
         $scope.profile = p;

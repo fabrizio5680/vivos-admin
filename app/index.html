@@ -108,22 +108,46 @@
         <h1 class="md-toolbar-tools">{{profile.firstName}}</h1>
       </md-toolbar>
       <md-content layout-padding layout="column" flex>
-        <div layout="column" ng-repeat="p in profile">
-          <div layout="row" flex="100" layout-align="start center" class="title">
-            <h4 ng-bind="p.question"></h4>
-          </div>
-          <div layout="row" flex="100" layout-align="start center" class="content">
-            <p ng-if="!isArray(p.value) && p.id !== 35 && p.id !== 34" ng-bind="p.value"></p>
-            <div ng-if="isArray(p.value)">
-              <p ng-repeat="itm in p.value track by $index" ng-bind="itm"></p>
+        <div layout="column" layout-padding>
+
+          <div layout="column" class="group">
+            <div layout="row" flex="100" layout-align="start center" class="title">
+              <h4>First Name</h4>
             </div>
-            <img style="max-width: 300px; width: 100%" ng-if="p.id === 35" ng-src="{{p.value}}">
-            <md-button ng-click="showCV($event, profile)" ng-if="p.id === 34" title="Launch CV" aria-label="CV" class="md-primary md-raised" ng-click="showCV($event, person)">
-              Open CV
-            </md-button>
-            <a ng-if="p.id === email" href="{{'mailto:' + p}}" ng-bind="value"></a>
+            <div layout="row" flex="100" layout-align="start center" class="content">
+              <p ng-bind="profile[2]"></p>
+            </div>
+          </div>
+          <div layout="column" class="group">
+            <div layout="row" flex="100" layout-align="start center" class="title">
+              <h4>Address</h4>
+            </div>
+            <div layout="row" flex="100" layout-align="start center" class="content">
+              <p ng-repeat="itm in profile[5] track by $index" ng-bind="itm"></p>
+            </div>
+          </div>
+
+          <div layout="column" class="group">
+            <div layout="row" flex="100" layout-align="start center" class="title">
+              <h4>Profile Image</h4>
+            </div>
+            <div layout="row" flex="100" layout-align="start center" class="content">
+              <img style="max-width: 300px; width: 100%" ng-src="{{profile[35]}}">
+            </div>
+          </div>
+
+          <div layout="column" class="group">
+            <div layout="row" flex="100" layout-align="start center" class="title">
+              <h4>CV</h4>
+            </div>
+            <div layout="row" flex="100" layout-align="start center" class="title">
+              <md-button ng-click="showCV($event, profile)"  title="Launch CV" aria-label="CV" class="md-primary md-raised">
+                Open CV
+              </md-button>
+            </div>
           </div>
         </div>
+
         <!--<div layout="row" ng-repeat="(key, value) in profile">-->
         <!--<div flex="50" ng-bind="key"></div><div flex="50" style="text-align: right" ng-bind="value"></div>-->
         <!--</div>-->
