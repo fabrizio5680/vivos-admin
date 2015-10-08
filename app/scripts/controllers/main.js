@@ -51,12 +51,14 @@ angular.module('surveyTreeModuleApp')
       $scope.query = {
         filter: '',
         order: 'id',
-        limit: 20,
+        limit: 100,
         page: 1
       };
 
       $scope.columns = [{
         name: 'Profile'
+      }, {
+        name: 'CV'
       }, {
         name: 'Vivos % Rating',
         orderBy: 'vRating.value'
@@ -136,7 +138,7 @@ angular.module('surveyTreeModuleApp')
 
 
 
-        apiClient.getUsers({id:15}).then(function (users) {
+        apiClient.getUsers({id:15, limit: 999}).then(function (users) {
 
           angular.forEach(users.items, function (item) {
             var qMap = angular.copy(questionMap);
@@ -164,7 +166,7 @@ angular.module('surveyTreeModuleApp')
 
     var personFactory = function (qMap) {
       return {
-        //cv: qMap[34],
+        cv: {id: 'cv', value: qMap[34] },
         vRating: {value: 0, id: 'vRating'},
         firstName: qMap[2],
         familyName: qMap[3],

@@ -24,7 +24,10 @@
           <md-icon md-svg-icon="/images/ic_account_circle_black_24px.svg" style="color: rgba(255,82,82,0.87);"></md-icon>
         </md-button>
       </td>
-      <td ng-repeat="p in person" ng-if="p.id !== 'profile' && p.id !== 'id'">
+      <td>
+        <iframe class="doc" src="https://docs.google.com/gview?url=http://writing.engr.psu.edu/workbooks/formal_report_template.doc&embedded=true"></iframe>
+      </td>
+      <td ng-repeat="p in person" ng-if="p.id !== 'profile' && p.id !== 'id' && p.id !== 'cv'">
         <span ng-if="p.id !== 'suitabilityRating'">{{p.value}}</span>
         <span ng-if="p.id === 'suitabilityRating'"><ng-rate-it step="0.5" ng-model="p.value"></ng-rate-it></span>
       </td>

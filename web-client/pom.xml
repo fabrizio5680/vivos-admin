@@ -10,7 +10,7 @@
 
     <properties>
         <app.id>vivosme</app.id>
-        <app.version>1-0-4</app.version>
+        <app.version>1-0-5</app.version>
         <appengine.version>1.9.21</appengine.version>
         <gcloud.plugin.version>0.9.58.v20150505</gcloud.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
