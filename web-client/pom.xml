@@ -9,8 +9,8 @@
     <artifactId>web-client</artifactId>
 
     <properties>
-        <app.id>vivos-api-staging</app.id>
-        <app.version>develop</app.version>
+        <app.id>vivosme</app.id>
+        <app.version>1-0-6</app.version>
         <appengine.version>1.9.21</appengine.version>
         <gcloud.plugin.version>0.9.58.v20150505</gcloud.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

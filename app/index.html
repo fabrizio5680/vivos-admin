@@ -118,7 +118,7 @@
               <p ng-repeat="itm in p.value track by $index" ng-bind="itm"></p>
             </div>
             <img style="max-width: 300px; width: 100%" ng-if="p.id === 35" ng-src="{{p.value}}">
-            <md-button ng-click="showCV(p)" ng-if="p.id === 34" title="Launch CV" aria-label="CV" class="md-icon-button launch" ng-click="showCV($event, person)">
+            <md-button ng-click="showCV($event, profile)" ng-if="p.id === 34" title="Launch CV" aria-label="CV" class="md-primary md-raised" ng-click="showCV($event, person)">
               Open CV
             </md-button>
             <a ng-if="p.id === email" href="{{'mailto:' + p}}" ng-bind="value"></a>

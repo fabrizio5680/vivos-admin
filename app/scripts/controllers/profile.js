@@ -48,7 +48,7 @@ angular.module('surveyTreeModuleApp')
 
     $scope.showCV = function (ev, user) {
       try {
-        var cv = user.cv.value.value;
+        var cv = user[34].value;
       } catch (e) {
 
       }
@@ -57,7 +57,7 @@ angular.module('surveyTreeModuleApp')
       iframe = '<iframe class="doc" src="' + cv + '"></iframe>';
 
       selectedUser.iframe = iframe;
-      selectedUser.firstName = user.firstName;
+      selectedUser.firstName = user[2];
 
       $mdDialog.show({
         controller: DialogController,

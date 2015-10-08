@@ -12,7 +12,9 @@ angular.module('surveyTreeModuleApp')
                                     $routeParams, $sce, $mdSidenav, apiAdmin, $q, $mdDialog,  profileHandler, apiClient) {
 
     var dateId = 4;
-
+    var offset = 0;
+    var limit = 20;
+    var questionMap = {};
     var iframe;
     var selectedUser = {};
 
@@ -54,7 +56,7 @@ angular.module('surveyTreeModuleApp')
       $scope.query = {
         filter: '',
         order: 'id',
-        limit: 100,
+        limit: 30,
         page: 1
       };
 
@@ -129,8 +131,6 @@ angular.module('surveyTreeModuleApp')
       };
 
       $http.get('/scripts/json/15.json').then(function (questions) {
-        var questionMap = {};
-
         angular.forEach(questions.data, function (q) {
 
           questionMap[q.id] = {
@@ -139,30 +139,41 @@ angular.module('surveyTreeModuleApp')
           };
         });
 
+        getUsersWithLimit(offset, limit);
+
+      });
+    };
+
+    var getUsersWithLimit = function (offset, limit) {
+      apiAdmin.getUsers({id:15, limit: limit, offset: offset}).then(function (users) {
+        processUsersRequest(users);
+
+        if (users.items && users.items.length > 0) {
+          offset += limit;
+          getUsersWithLimit(offset, limit);
+        }
+      });
+    };
+
+    var processUsersRequest = function (users) {
 
 
-        apiAdmin.getUsers({id:15, limit: 999}).then(function (users) {
-
-          angular.forEach(users.items, function (item) {
-            var qMap = angular.copy(questionMap);
-
-            angular.forEach(item, function (itm, key) {
-              try {
-                if (key === '5' || key === '39') {
-                  itm[0] = JSON.parse(itm[0]);
-                  qMap[key].value = itm[0];
-                } else {
-                  qMap[key].value = itm[0];
-                }
-              } catch (e) {
-                qMap[key] = itm;
-              }
-            });
-
-            $scope.persons.push(personFactory(qMap));
-          });
-
+      angular.forEach(users.items, function (item) {
+        var qMap = angular.copy(questionMap);
+        angular.forEach(item, function (itm, key) {
+          try {
+            if (key === '5' || key === '39') {
+              itm[0] = JSON.parse(itm[0]);
+              qMap[key].value = itm[0];
+            } else {
+              qMap[key].value = itm[0];
+            }
+          } catch (e) {
+            qMap[key] = itm;
+          }
         });
+
+        $scope.persons.push(personFactory(qMap));
       });
     };
 
