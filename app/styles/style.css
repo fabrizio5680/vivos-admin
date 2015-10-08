@@ -8,6 +8,13 @@ body {
     color: #5f5e5e;
 }
 
+iframe.doc {
+    width: 700px;
+    height: 500px;
+    border: none;
+    background-color: white;
+}
+
 table[md-data-table] > thead > tr > th > div[trim] {
     min-width: 100px!important;
 }

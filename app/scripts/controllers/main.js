@@ -9,9 +9,12 @@ var json;
  */
 angular.module('surveyTreeModuleApp')
   .controller('MainCtrl', function ($scope, $rootScope, $http, $timeout, localStorageService, utils, $location, $mdUtil,
-                                    $routeParams, $sce, $mdSidenav, $q, profileHandler, apiClient) {
+                                    $routeParams, $sce, $mdSidenav, apiAdmin, $q, $mdDialog,  profileHandler, apiClient) {
 
     var dateId = 4;
+
+    var iframe;
+    var selectedUser = {};
 
     var getUrlPath = function () {
       return $routeParams.questionnaireId || 15;
@@ -138,7 +141,7 @@ angular.module('surveyTreeModuleApp')
 
 
 
-        apiClient.getUsers({id:15, limit: 999}).then(function (users) {
+        apiAdmin.getUsers({id:15, limit: 999}).then(function (users) {
 
           angular.forEach(users.items, function (item) {
             var qMap = angular.copy(questionMap);
@@ -163,6 +166,52 @@ angular.module('surveyTreeModuleApp')
       });
     };
 
+    var DialogController = function ($scope, $mdDialog) {
+      $scope.firstName = selectedUser.firstName.value;
+      $scope.iframe = $sce.trustAsHtml(selectedUser.iframe);
+
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+
+      $scope.print = function () {
+        window.print();
+      };
+
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+      $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
+    };
+
+    $scope.showCV = function (ev, user) {
+      try {
+        var cv = user.cv.value.value;
+      } catch (e) {
+
+      }
+
+      cv = 'https://docs.google.com/gview?url=' + cv + '&embedded=true';
+      iframe = '<iframe class="doc" src="' + cv + '"></iframe>';
+
+      selectedUser.iframe = iframe;
+      selectedUser.firstName = user.firstName;
+
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: '/views/templates/doc-dialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true
+      })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+    };
 
     var personFactory = function (qMap) {
       return {

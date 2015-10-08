@@ -82,9 +82,6 @@ angular.module('surveyTreeModuleApp')
         return api.execute(api.API_CLIENT, ['user', 'register'], payload);
       };
 
-      this.login = function (payload) {
-        return api.execute(api.API_CLIENT, ['user', 'login'], payload);
-      };
 
       this.getUrl = function (payload) {
         return api.execute(api.API_CLIENT, ['url', 'get'], payload);

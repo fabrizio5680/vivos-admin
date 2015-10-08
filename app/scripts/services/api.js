@@ -14,6 +14,7 @@ angular.module('surveyTreeModuleApp')
 
     service.init = function () {
       service.API_CLIENT = 'client';
+      service.API_ADMIN = 'admin';
 
       service.EVENT_GAPI_READY = 'api.gapiReady';
 
@@ -27,10 +28,12 @@ angular.module('surveyTreeModuleApp')
 
       service.endpoints = {};
       service.endpoints[service.API_CLIENT] = { name: service.API_CLIENT, v: 'v1' };
+      service.endpoints[service.API_ADMIN] = { name: service.API_ADMIN, v: 'v1' };
 
       // Preload API
       $gapi.loaded.then(function () {
         $gapi.load(service.API_CLIENT, service.endpoints[service.API_CLIENT].v, true);
+        $gapi.load(service.API_ADMIN, service.endpoints[service.API_ADMIN].v, true);
       });
     };
 

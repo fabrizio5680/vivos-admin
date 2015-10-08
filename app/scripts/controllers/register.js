@@ -8,7 +8,7 @@
  * Controller of the surveyTreeModuleApp
  */
 angular.module('surveyTreeModuleApp')
-  .controller('RegisterCtrl', function ($scope, $rootScope, $location, apiClient, localStorageService) {
+  .controller('RegisterCtrl', function ($scope, $rootScope, $location, apiAdmin, apiClient, localStorageService) {
 
     var self = this;
     $scope.user = {};
@@ -66,7 +66,7 @@ angular.module('surveyTreeModuleApp')
         password: this.user.password
       };
 
-      apiClient.login(payload).then(function (response) {
+      apiAdmin.login(payload).then(function (response) {
         if (response && response.authToken) {
           apiClient.saveUserAndSetToken(response);
           self.redirect();

@@ -62,6 +62,14 @@
     table[md-data-table][md-row-select]>tbody>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>tfoot>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>thead:not([md-table-progress])>tr>th:nth-child(n+3):nth-last-child(n+2) {
       padding: 0 10px;
     }
+
+
+    iframe.doc {
+      width: 700px;
+      height: 500px;
+      border: none;
+      background-color: white;
+    }
   </style>
 </head>
 <body ng-app="surveyTreeModuleApp" ng-cloak layout="column">
@@ -79,19 +87,19 @@
   <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
     <ul class="menu-toggle-list">
       <li>
-        <md-button>Vacancies</md-button>
+        <md-button disabled>Vacancies</md-button>
       </li>
       <li>
         <md-button>Candidates</md-button>
       </li>
       <li>
-        <md-button>Recruiters</md-button>
+        <md-button disabled>Recruiters</md-button>
       </li>
     </ul>
   </md-sidenav>
   <div layout="column" flex id="content">
     <md-content layout="column" flex class="md-padding">
-      <md-card ng-view>
+      <md-card ng-view></md-card>
     </md-content>
   </div>
   <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
@@ -105,13 +113,15 @@
             <h4 ng-bind="p.question"></h4>
           </div>
           <div layout="row" flex="100" layout-align="start center" class="content">
-            <p ng-if="p.id !== '5' && p.id !== '39' && p.id !== '34' && p.id !== '35' && p.id !== 'email'" ng-bind="p.answer"></p>
-            <div ng-if="p.id == '5' || p.id == '39' && p.id !== 'email'">
-              <p ng-repeat="itm in p.answer track by $index" ng-bind="itm"></p>
+            <p ng-if="!isArray(p.value) && p.id !== 35 && p.id !== 34" ng-bind="p.value"></p>
+            <div ng-if="isArray(p.value)">
+              <p ng-repeat="itm in p.value track by $index" ng-bind="itm"></p>
             </div>
-            <img style="max-width: 300px; width: 100%" ng-if="p.id === '35'"  ng-src="{{p.answer}}">
-            <a ng-if="p.id === '34'" href="{{p.answer}}">Link to CV</a>
-            <a ng-if="p.id === 'email'" href="{{'mailto:' + p}}" ng-bind="value"></a>
+            <img style="max-width: 300px; width: 100%" ng-if="p.id === 35" ng-src="{{p.value}}">
+            <md-button ng-click="showCV(p)" ng-if="p.id === 34" title="Launch CV" aria-label="CV" class="md-icon-button launch" ng-click="showCV($event, person)">
+              Open CV
+            </md-button>
+            <a ng-if="p.id === email" href="{{'mailto:' + p}}" ng-bind="value"></a>
           </div>
         </div>
         <!--<div layout="row" ng-repeat="(key, value) in profile">-->
@@ -210,6 +220,7 @@
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/services/api.js"></script>
 <script src="scripts/services/api_client.js"></script>
+<script src="scripts/services/api_admin.js"></script>
 <script src="scripts/services/templates.js"></script>
 <script src="scripts/services/utils.js"></script>
 <script src="scripts/controllers/results.js"></script>
