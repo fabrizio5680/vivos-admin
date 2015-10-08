@@ -180,6 +180,7 @@ angular.module('surveyTreeModuleApp')
     var DialogController = function ($scope, $mdDialog) {
       $scope.firstName = selectedUser.firstName.value;
       $scope.iframe = $sce.trustAsHtml(selectedUser.iframe);
+      $scope.download = selectedUser.download;
 
       $scope.hide = function() {
         $mdDialog.hide();
@@ -200,6 +201,7 @@ angular.module('surveyTreeModuleApp')
     $scope.showCV = function (ev, user) {
       try {
         var cv = user.cv.value.value;
+        var raw = user.cv.value.value;
       } catch (e) {
 
       }
@@ -209,6 +211,7 @@ angular.module('surveyTreeModuleApp')
 
       selectedUser.iframe = iframe;
       selectedUser.firstName = user.firstName;
+      selectedUser.download = raw;
 
       $mdDialog.show({
         controller: DialogController,

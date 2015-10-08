@@ -16,9 +16,13 @@
         </md-dialog-content>
         <div class="md-actions" layout="row">
             <md-button ng-click="print()" md-autofocus>
-                Print PDF
+                Print
             </md-button>
             <span flex></span>
+
+            <md-button href="{{download}}"  title="Download CV" target="_blank" class="md-primary md-raised" style="margin-right:20px;">
+                Download
+            </md-button>
             <md-button ng-click="answer('useful')" style="margin-right:20px;" >
                 Done
             </md-button>

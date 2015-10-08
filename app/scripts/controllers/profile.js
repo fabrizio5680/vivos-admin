@@ -8,7 +8,7 @@
  * Controller of the surveyTreeModuleApp
  */
 angular.module('surveyTreeModuleApp')
-  .controller('ProfileCtrl', function ($scope, $rootScope, $sce, $mdDialog, $log, $routeParams, profileHandler, $mdSidenav) {
+  .controller('ProfileCtrl', function ($scope, $rootScope, $sce, $mdDialog, $log, $routeParams, apiClient, profileHandler, $mdSidenav) {
 
     var getUrlPath = function () {
       return profileHandler.getProfile();
@@ -28,7 +28,7 @@ angular.module('surveyTreeModuleApp')
     var DialogController = function ($scope, $mdDialog) {
       $scope.firstName = selectedUser.firstName.value;
       $scope.iframe = $sce.trustAsHtml(selectedUser.iframe);
-
+      $scope.download = selectedUser.download;
       $scope.hide = function() {
         $mdDialog.hide();
       };
@@ -49,6 +49,7 @@ angular.module('surveyTreeModuleApp')
     $scope.showCV = function (ev, user) {
       try {
         var cv = user[34].value;
+        var raw = user[34].value;
       } catch (e) {
 
       }
@@ -58,6 +59,7 @@ angular.module('surveyTreeModuleApp')
 
       selectedUser.iframe = iframe;
       selectedUser.firstName = user[2];
+      selectedUser.download = raw;
 
       $mdDialog.show({
         controller: DialogController,
@@ -91,7 +93,21 @@ angular.module('surveyTreeModuleApp')
       //  delete map.id;
       //  delete map.kind;
       //  delete map.etag;
-      $scope.profile = getUrlPath();
+      var p = getUrlPath();
+
+
+      apiClient.getProfile({userId: p.id, questionnareId: 15 }).then(function (profile) {
+        angular.forEach(profile, function (value, key) {
+          try {
+            p[key].value = JSON.parse(value);
+          } catch (e) {
+            if (p[key] && p[key].value) {
+              p[key].value = value;
+            }
+          }
+        });
+        $scope.profile = p;
+      });
 
       //});
 
