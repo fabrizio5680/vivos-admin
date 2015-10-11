@@ -9,7 +9,7 @@ var json;
  */
 angular.module('surveyTreeModuleApp')
   .controller('MainCtrl', function ($scope, $rootScope, $http, $timeout, localStorageService, utils, $location, $mdUtil,
-                                    $routeParams, $sce, $mdSidenav, apiAdmin, $q, $mdDialog,  profileHandler, apiClient) {
+                                    $routeParams, $sce, $mdSidenav, apiAdmin, $q, $mdDialog,  profileHandler, candidate) {
 
     var dateId = 4;
     var offset = 0;
@@ -18,38 +18,23 @@ angular.module('surveyTreeModuleApp')
     var iframe;
     var selectedUser = {};
 
-    var getUrlPath = function () {
-      return $routeParams.questionnaireId || 15;
-    };
-
-
-    $scope.setDate = function () {
-      $scope.answers[dateId] = moment($scope.dates[dateId]).format('DD/MM/YYYY');
-    };
-
-    $scope.toggleLeft = buildToggler('left');
-    $scope.toggleRight = buildToggler('right');
-    /**
-     * Build handler to open/close a SideNav; when animation finishes
-     * report completion in console
-     */
-    function buildToggler(navID) {
-      var debounceFn =  $mdUtil.debounce(function(){
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $rootScope.$broadcast('toggleOpen');
-          });
-      },300);
-      return debounceFn;
-    }
-
-    $scope.setProfile = function (profile) {
-      profileHandler.setProfile(profile);
-    };
+    var candidateStatus =  candidate.getCandidateStatus();
 
 
     var init = function () {
+
+      $scope.toggleLeft = buildToggler('left');
+      $scope.toggleRight = buildToggler('right');
+
+      $scope.generalRating = [
+        {value: 1, name: 'A'},
+        {value: 2, name: 'B'},
+        {value: 3, name: 'C'},
+        {value: 4, name: 'D'},
+        {value: 5, name: 'E'},
+        {value: 6, name: 'F'}
+      ];
+
       $scope.persons = [];
       $scope.tableHeaders = [];
       $scope.selected = [];
@@ -123,6 +108,10 @@ angular.module('surveyTreeModuleApp')
         return d.promise;
       };
 
+      $scope.onGeneralRatingChange = function (person) {
+        console.log(person);
+      };
+
       $scope.onPaginationChange = function (page, limit) {
         var d = $q.defer();
         var j = json.splice(0, limit);
@@ -131,32 +120,29 @@ angular.module('surveyTreeModuleApp')
       };
 
       $http.get('/scripts/json/15.json').then(function (questions) {
-        angular.forEach(questions.data, function (q) {
 
+        angular.forEach(questions.data, function (q) {
           questionMap[q.id] = {
             id: q.id,
             question: q.question
           };
         });
 
-        getUsersWithLimit(offset, limit);
+        getCandidates(offset, limit);
 
       });
     };
 
-    var getUsersWithLimit = function (offset, limit) {
-      apiAdmin.getUsers({id:15, limit: limit, offset: offset}).then(function (users) {
-        processUsersRequest(users);
+    var getCandidates = function (offset, limit) {
+      candidate.get(offset, limit).then(function (users) {
+        buildCandidates(users);
 
         if (users.items && users.items.length > 0) {
           offset += limit;
-          getUsersWithLimit(offset, limit);
+          getCandidates(offset, limit);
         }
-
-        personStatus = localStorageService.get('personStatus', personStatus);
-        personStatus = personStatus || {};
         angular.forEach($scope.persons, function (person) {
-          angular.forEach(personStatus, function (p, id) {
+          angular.forEach(candidateStatus, function (p, id) {
             if (person.id.value === id) {
               person.status.value = p;
             }
@@ -166,21 +152,12 @@ angular.module('surveyTreeModuleApp')
       });
     };
 
-    var personStatus = {};
 
-    $scope.changeSelectionStatus = function (status) {
-      personStatus = personStatus || {};
-      angular.forEach($scope.selected, function (person) {
-        person.status.value = status;
-        personStatus[person.id.value] = status;
-      });
-
-      localStorageService.set('personStatus', personStatus);
+    $scope.onStatusChange = function (status) {
+      candidate.changeStatus($scope.selected, status);
     };
 
-    var processUsersRequest = function (users) {
-
-
+    var buildCandidates = function (users) {
       angular.forEach(users.items, function (item) {
         var qMap = angular.copy(questionMap);
         angular.forEach(item, function (itm, key) {
@@ -196,7 +173,7 @@ angular.module('surveyTreeModuleApp')
           }
         });
 
-        $scope.persons.push(personFactory(qMap));
+        $scope.persons.push(candidate.create(qMap));
       });
     };
 
@@ -250,32 +227,38 @@ angular.module('surveyTreeModuleApp')
         });
     };
 
-    var personFactory = function (qMap) {
-      return {
-        cv: {id: 'cv', value: qMap[34] },
-        vRating: {value: 0, id: 'vRating'},
-        firstName: qMap[2],
-        familyName: qMap[3],
-        status: {value: 'pending'},
-        generalRating: {value: 0, id: 'generalRating' },
-        suitabilityRating: {value: 0, id: 'suitabilityRating' },
-        articleship: qMap[23],
-        accountancyQualificationYear: qMap[12],
-        departments: qMap[25],
-        accountancyQualificationAttempts: qMap[13],
-        educationHighSchool: qMap[38],
-        educationDegree: qMap[17],
-        performanceRating: qMap[26],
-        primaryClients: qMap[24],
-        dob: qMap[4],
-        id: {id: 'id', value: qMap.id },
-        profile: { id: 'profile', value: qMap }
-      }
-    };
-
 
     $scope.profile = function (id) {
       $location.url('/profile/' + id);
+    };
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    var buildToggler = function (navID) {
+      return $mdUtil.debounce(function(){
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $rootScope.$broadcast('toggleOpen');
+          });
+      },300);
+    };
+
+
+    var getUrlPath = function () {
+      return $routeParams.questionnaireId || 15;
+    };
+
+
+    $scope.setDate = function () {
+      $scope.answers[dateId] = moment($scope.dates[dateId]).format('DD/MM/YYYY');
+    };
+
+
+    $scope.setProfile = function (profile) {
+      profileHandler.setProfile(profile);
     };
 
 

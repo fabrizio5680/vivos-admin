@@ -1,0 +1,84 @@
+
+
+form .alert {display: none;}
+table[md-data-table] > thead > tr > th > div[trim] {
+    min-width: 100px!important;
+}
+md-sidenav.md-locked-open {
+    min-width: 200px;
+    width: 200px;
+    max-width: 200px;
+}
+md-sidenav.md-sidenav-right {
+    min-width: 500px;
+    width: 500px;
+    max-width: 500px;
+}
+md-sidenav.md-locked-open {
+    min-width: 200px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.menu-toggle-list {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-toggle-list button {
+    width: 100%;
+    margin: 0 0;
+    padding: 5px 0;
+}
+.ng-hide:not(.ng-hide-animate), {
+    display: none !important;
+}
+
+table[md-data-table]>thead:not([md-table-progress])>tr>th[trim] {
+    min-width: 100px;
+}
+
+table[md-data-table][md-row-select]>tbody>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>tfoot>tr>td:nth-child(n+3):nth-last-child(n+2), table[md-data-table][md-row-select]>thead:not([md-table-progress])>tr>th:nth-child(n+3):nth-last-child(n+2) {
+    padding: 0 10px;
+}
+
+
+iframe.doc {
+    width: 800px;
+    height: 500px;
+    border: none;
+    background-color: white;
+}
+
+td.rejected {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+td.accepted {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.general-rating {
+    cursor: pointer;
+    width: 120px;
+}
+.general-rating select {
+    width: 45px;
+}
+
+.general-rating .save {
+    color: green;
+}
+.general-rating .cancel {
+    color: red;
+}
+
+.general-rating .save, .general-rating .cancel {
+    height: 12px;
+    line-height: 16px;
+    transform: scale(.75);
+    -moz-transform: scale(.75);
+}
+
+.general-rating .rating-select {
+    margin: 5px 0;
+}

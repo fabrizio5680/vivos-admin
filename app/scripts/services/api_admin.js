@@ -22,5 +22,9 @@ angular.module('surveyTreeModuleApp')
       return api.execute(api.API_ADMIN, ['user', 'login'], payload);
     };
 
+    this.generalRating = function (payload) {
+      return api.execute(api.API_ADMIN, ['user', 'rating'], payload);
+    };
+
 
   });
