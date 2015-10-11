@@ -5,6 +5,12 @@
 
 <md-data-table-toolbar class="alternate" ng-show="selected.length">
   <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
+  <md-button title="Accept" aria-label="Accept" class="md-primary md-raised" ng-click="changeSelectionStatus('accepted')">
+    Accept
+  </md-button>
+  <md-button title="Reject" aria-label="Reject" class="md-warn md-raised" ng-click="changeSelectionStatus('rejected')">
+    Reject
+  </md-button>
 </md-data-table-toolbar>
 
 <md-data-table-container>
@@ -16,7 +22,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-      <td>
+      <td ng-class="{accepted: person.status.value === 'accepted', rejected: person.status.value === 'rejected'}">
         <md-button title="Launch Profile"
                    ng-click="toggleRight(); setProfile(person.profile.value)"
                    aria-label="Profile"

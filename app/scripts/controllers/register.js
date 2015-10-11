@@ -54,7 +54,12 @@ angular.module('surveyTreeModuleApp')
         localStorageService.set('user.email', response.email);
 
         $scope.stopSpin();
-      }, function () {
+      }, function (error) {
+        try {
+          $scope.error = JSON.parse(error);
+        } catch (e) {
+          $scope.error = error;
+        }
         $scope.stopSpin();
       });
     };

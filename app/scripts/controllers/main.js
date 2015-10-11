@@ -152,7 +152,30 @@ angular.module('surveyTreeModuleApp')
           offset += limit;
           getUsersWithLimit(offset, limit);
         }
+
+        personStatus = localStorageService.get('personStatus', personStatus);
+        personStatus = personStatus || {};
+        angular.forEach($scope.persons, function (person) {
+          angular.forEach(personStatus, function (p, id) {
+            if (person.id.value === id) {
+              person.status.value = p;
+            }
+          });
+        });
+
       });
+    };
+
+    var personStatus = {};
+
+    $scope.changeSelectionStatus = function (status) {
+      personStatus = personStatus || {};
+      angular.forEach($scope.selected, function (person) {
+        person.status.value = status;
+        personStatus[person.id.value] = status;
+      });
+
+      localStorageService.set('personStatus', personStatus);
     };
 
     var processUsersRequest = function (users) {
