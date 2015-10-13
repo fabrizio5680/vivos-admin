@@ -11,7 +11,7 @@ angular.module('surveyTreeModuleApp')
   .service('apiAdmin', function ($q, api) {
     /**
      * Create Candidate Method
-     * @param data
+     * @param payload
      * @returns {*}
      */
     this.getUsers = function (payload) {
@@ -22,5 +22,12 @@ angular.module('surveyTreeModuleApp')
       return api.execute(api.API_ADMIN, ['user', 'login'], payload);
     };
 
+    this.generalRating = function (payload) {
+      return api.execute(api.API_ADMIN, ['user', 'rating'], payload);
+    };
+
+    this.vacancies = function (payload) {
+      return api.execute(api.API_ADMIN, ['vacancy', 'list'], payload);
+    };
 
   });

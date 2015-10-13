@@ -5,10 +5,10 @@
 
 <md-data-table-toolbar class="alternate" ng-show="selected.length">
   <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
-  <md-button title="Accept" aria-label="Accept" class="md-primary md-raised" ng-click="changeSelectionStatus('accepted')">
+  <md-button title="Accept" aria-label="Accept" class="md-primary md-raised" ng-click="onStatusChange('accepted')">
     Accept
   </md-button>
-  <md-button title="Reject" aria-label="Reject" class="md-warn md-raised" ng-click="changeSelectionStatus('rejected')">
+  <md-button title="Reject" aria-label="Reject" class="md-warn md-raised" ng-click="onStatusChange('rejected')">
     Reject
   </md-button>
 </md-data-table-toolbar>
@@ -36,9 +36,39 @@
         </md-button>
 
       </td>
-      <td ng-repeat="p in person" ng-if="p.id !== 'profile' && p.id !== 'id' && p.id !== 'cv'">
-        <span ng-if="p.id !== 'suitabilityRating'">{{p.value}}</span>
-        <span ng-if="p.id === 'suitabilityRating'"><ng-rate-it step="0.5" ng-model="p.value"></ng-rate-it></span>
+      <td ng-repeat="field in person" ng-if="!field.special">
+
+        <!-- ALL TABLE FIELDS-->
+        <span ng-if="!field.tableIgnore">{{field.value}}</span>
+
+        <!-- SUITABILITY RATING-->
+        <span ng-if="field.id === 'suitabilityRating'"><ng-rate-it step="0.5" ng-model="field.value"></ng-rate-it></span>
+
+
+        <!-- GENERAL RATING -->
+        <div class="general-rating" ng-if="field.id === 'generalRating'" editable-field="onGeneralRatingChange" layout="column">
+          <div layout="row" flex>
+            <span class="ng-hide" ng-bind="generalRating[field.value - 1].name" ng-hide="editable" ng-click="onEdit(person)"></span>
+            <md-select ng-model="field.value" class="ng-hide rating-select" ng-change="onChange(person)" ng-show="editable" flex>
+              <md-option ng-repeat="g in generalRating" value="{{g.value}}">
+                {{g.name}}
+              </md-option>
+            </md-select>
+            <div layout="column" flex>
+              <md-button class="md-icon-button save ng-hide" aria-label="Save" ng-show="editable" ng-click="onSave(person)">
+                <md-icon md-svg-icon="/images/ic_check_black_12px.svg"></md-icon>
+              </md-button>
+              <md-button class="md-icon-button cancel ng-hide" aria-label="Cancel" ng-show="editable" ng-click="onCancel(person)">
+                <md-icon md-svg-icon="/images/ic_close_black_16px.svg"></md-icon>
+              </md-button>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
       </td>
     </tr>
     </tbody>
