@@ -38,7 +38,7 @@ angular.module('surveyTreeModuleApp')
 
     this.generalRating = function (person) {
       var d = $q.defer();
-      apiAdmin.generalRating({rating: person.generalRating.value, userId: person.id.value}).then(function (p) {
+      apiAdmin.generalRating({questionnaireId: 15, rating: person.generalRating.value, userId: person.id.value}).then(function (p) {
         d.resolve(p);
       });
       return d.promise;
