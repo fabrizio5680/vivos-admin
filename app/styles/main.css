@@ -20,6 +20,11 @@ md-sidenav.md-locked-open {
     max-width: 200px;
 }
 
+
+md-select-menu, md-select-menu md-content {
+    max-height: 300px;
+}
+
 .menu-toggle-list {
     margin: 0;
     padding: 0;
@@ -82,3 +87,18 @@ td.accepted {
 .general-rating .rating-select {
     margin: 5px 0;
 }
+
+td.general-rating {
+    padding: 0!important;
+    text-align: center!important;
+}
+td.general-rating span.display {
+    display: block;
+    height: 46px;
+    width: 100%;
+    line-height: 46px;
+}
+td.general-rating span.display:hover {
+    background: rgb(255,193,7);
+}
+

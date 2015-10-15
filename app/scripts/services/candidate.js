@@ -20,7 +20,7 @@ angular.module('surveyTreeModuleApp')
         firstName: qMap[2],
         familyName: qMap[3],
         status: {value: 'pending'},
-        generalRating: {value: qMap.rating || 6, id: 'generalRating', tableIgnore: true},
+        generalRating: {value: qMap.rating || 'unrated', id: 'generalRating', tableIgnore: true},
         suitabilityRating: {value: 0, id: 'suitabilityRating', tableIgnore: true},
         articleship: qMap[23],
         accountancyQualificationYear: qMap[12],
@@ -33,7 +33,7 @@ angular.module('surveyTreeModuleApp')
         dob: qMap[4],
         id: {id: 'id', value: qMap.id, special: true },
         profile: { id: 'profile', value: qMap, special: true }
-      }
+      };
     };
 
     this.generalRating = function (person) {
@@ -58,6 +58,8 @@ angular.module('surveyTreeModuleApp')
 
       apiAdmin.getUsers({id:15, limit: limit, offset: offset}).then(function (users) {
         d.resolve(users);
+      }, function (e) {
+        d.reject(e);
       });
 
       return d.promise;

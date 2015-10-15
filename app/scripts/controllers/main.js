@@ -149,6 +149,11 @@ angular.module('surveyTreeModuleApp')
           });
         });
 
+      }, function (e) {
+        if (e && e.code === 503) {
+          localStorageService.set('user', null);
+          $location.url('/');
+        }
       });
     };
 

@@ -73,6 +73,9 @@ angular.module('surveyTreeModuleApp')
             gapi(payload).execute(function (data) {
               $timeout(function () {
                 $rootScope.$apply(function () {
+                  if (data && data.error) {
+                    deferred.reject(data);
+                  }
                   deferred.resolve(data);
                 });
               });

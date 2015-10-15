@@ -34,9 +34,8 @@
         <md-button title="Launch CV" aria-label="CV" class="md-icon-button launch" ng-click="showCV($event, person)">
           <md-icon md-svg-icon="/images/ic_assignment_black_24px.svg" style="color: rgba(255,82,82,0.87);"></md-icon>
         </md-button>
-
       </td>
-      <td ng-repeat="field in person" ng-if="!field.special">
+      <td ng-repeat="field in person" ng-if="!field.special" ng-class="{'general-rating': field.id === 'generalRating'}">
 
         <!-- ALL TABLE FIELDS-->
         <span ng-if="!field.tableIgnore">{{field.value}}</span>
@@ -44,16 +43,20 @@
         <!-- SUITABILITY RATING-->
         <span ng-if="field.id === 'suitabilityRating'"><ng-rate-it step="0.5" ng-model="field.value"></ng-rate-it></span>
 
-
         <!-- GENERAL RATING -->
         <div class="general-rating" ng-if="field.id === 'generalRating'" editable-field="onGeneralRatingChange" layout="column">
           <div layout="row" flex>
-            <span class="ng-hide" ng-bind="generalRating[field.value - 1].name" ng-hide="editable" ng-click="onEdit(person)"></span>
-            <md-select ng-model="field.value" class="ng-hide rating-select" ng-change="onChange(person)" ng-show="editable" flex>
-              <md-option ng-repeat="g in generalRating" value="{{g.value}}">
-                {{g.name}}
-              </md-option>
-            </md-select>
+            <span class="ng-hide display" ng-bind="generalRating[field.value - 1].name || 'Unrated'" ng-hide="editable" ng-click="onEdit(person)"></span>
+
+            <md-input-container  ng-show="editable" class="ng-hide">
+              <label>Rate</label>
+              <md-select ng-model="field.value" class="rating-select" ng-change="onChange(person)" flex>
+                <md-option ng-repeat="g in generalRating" value="{{g.value}}">
+                  {{g.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
             <div layout="column" flex>
               <md-button class="md-icon-button save ng-hide" aria-label="Save" ng-show="editable" ng-click="onSave(person)">
                 <md-icon md-svg-icon="/images/ic_check_black_12px.svg"></md-icon>
