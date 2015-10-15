@@ -251,6 +251,9 @@ angular.module('surveyTreeModuleApp')
       },300);
     };
 
+    $scope.onSearch = function () {
+      console.log($scope.search);
+    };
 
     var getUrlPath = function () {
       return $routeParams.questionnaireId || 15;

@@ -1,6 +1,14 @@
 
 <md-data-table-toolbar ng-show="!selected.length">
   <h2 class="md-title">Vacancies</h2>
+
+  <div layout="row" layout-align="end center" flex>
+    <md-input-container>
+      <label>Search</label>
+      <input ng-model="searchQuery" ng-change="onChange()">
+    </md-input-container>
+  </div>
+
 </md-data-table-toolbar>
 
 <md-data-table-toolbar class="alternate" ng-show="selected.length">
@@ -21,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+    <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit | filter: searchQuery">
       <td ng-class="{accepted: person.status.value === 'accepted', rejected: person.status.value === 'rejected'}">
         <md-button title="Launch Profile"
                    ng-click="toggleRight(); setProfile(person.profile.value)"
