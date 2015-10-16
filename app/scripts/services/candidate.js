@@ -19,7 +19,6 @@ angular.module('surveyTreeModuleApp')
         vRating: {value: 0, id: 'vRating'},
         firstName: qMap[2],
         familyName: qMap[3],
-        ica_number: {id: 'ica_number' , value: qMap[10], special: true},
         status: {value: 'pending'},
         generalRating: {value: qMap.rating || 'unrated', id: 'generalRating', tableIgnore: true},
         suitabilityRating: {value: 0, id: 'suitabilityRating', tableIgnore: true},
