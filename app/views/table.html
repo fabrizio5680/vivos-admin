@@ -29,7 +29,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit | filter: searchQuery">
+    <tr ng-repeat="person in persons | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit | tableFilter: searchQuery">
       <td ng-class="{accepted: person.status.value === 'accepted', rejected: person.status.value === 'rejected'}">
         <md-button title="Launch Profile"
                    ng-click="toggleRight(); setProfile(person.profile.value)"
