@@ -11,6 +11,7 @@ angular.module('surveyTreeModuleApp')
   .service('candidate', function (localStorageService, apiAdmin, $q) {
 
     var candidateStatus = {};
+    var persons = [];
 
     var getLastRating = function (qMap) {
       var ratings = qMap.ratings;
@@ -50,6 +51,14 @@ angular.module('surveyTreeModuleApp')
         id: {id: 'id', value: qMap.id, special: true },
         profile: { id: 'profile', value: qMap, special: true }
       };
+    };
+
+    this.addToPersons = function (person) {
+      persons.push(person);
+    };
+
+    this.getPersons = function () {
+      return persons;
     };
 
     this.generalRating = function (person) {

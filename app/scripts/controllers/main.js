@@ -8,6 +8,7 @@ var json;
  * Controller of the surveyTreeModuleApp
  */
 angular.module('surveyTreeModuleApp')
+
   .controller('MainCtrl', function ($scope, $rootScope, $http, $timeout, localStorageService, utils, $location, $mdUtil,
                                     $routeParams, $sce, $mdSidenav, apiAdmin, $q, $mdDialog,  profileHandler, candidate) {
 
@@ -22,8 +23,8 @@ angular.module('surveyTreeModuleApp')
 
 
     var init = function () {
-
       $scope.tablePopulated = false;
+      $scope.searchQuery = null;
 
       $scope.toggleLeft = buildToggler('left');
       $scope.toggleRight = buildToggler('right');
@@ -185,7 +186,9 @@ angular.module('surveyTreeModuleApp')
           }
         });
 
-        $scope.persons.push(candidate.create(qMap));
+        var person = candidate.create(qMap);
+        $scope.persons.push(person);
+        candidate.addToPersons(person)
       });
     };
 
