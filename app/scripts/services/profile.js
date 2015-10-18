@@ -8,9 +8,10 @@
  * Service in the surveyTreeModuleApp.
  */
 angular.module('surveyTreeModuleApp')
-  .service('profileHandler', function () {
+  .service('profileHandler', function (apiAdmin) {
     var profile;
 
+    this.comment = null;
 
     this.setProfile = function (p) {
       profile = p;
@@ -19,5 +20,4 @@ angular.module('surveyTreeModuleApp')
     this.getProfile = function () {
       return profile;
     };
-
   });

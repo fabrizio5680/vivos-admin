@@ -1,22 +1,561 @@
+<md-content ng-controller="ProfileCtrl">
+  <md-progress-linear ng-show="sendingComment" class="ng-hide" md-mode="indeterminate"></md-progress-linear>
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Profile">
+      <md-content class="md-padding">
+        <!--<h6 class="md-display-2">{{profile[2]}} {{profile[3]}}</h6>-->
+        <md-content layout-padding layout="column" flex>
+          <div layout="column" layout-padding>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <tbody>
-          <tr ng-repeat="(key, value) in profile track by $index">
-            <td ng-bind="key"></td>
-            <td>
-              <p ng-if="key !== '34' && key !== '35' && key !== 'email'" ng-repeat="v in value track by $index" ng-bind="v"></p>
-              <img style="max-width: 300px; width: 100%" ng-if="key === '35'"  ng-src="{{value[0]}}">
-              <a ng-if="key === '34'" href="{{value[0]}}">Link to CV</a>
-              <a ng-if="key === 'email'" href="{{'mailto:' + value}}" ng-bind="value"></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>CV</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <md-button ng-click="showCV($event, profile)"  title="Launch CV" aria-label="CV" class="md-primary md-raised">
+                  Open CV
+                </md-button>
+              </div>
+            </div>
+
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Profile Image</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <img style="max-width: 300px; width: 100%" ng-src="{{profile[35]}}">
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>First Name</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile[2]"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Family Name</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile[3]"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>DOB</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile[4]"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Address</h4>
+              </div>
+              <div layout="row" flex="100" class="content">
+                <p ng-repeat="itm in profile[5] track by $index" ng-bind="itm"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Telephone Number (including area code)</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile[6]"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Email</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile.email"></p>
+              </div>
+            </div>
+
+            <div layout="column" class="group">
+              <div layout="row" flex="100" layout-align="start center" class="title">
+                <h4>Correspondence Email</h4>
+              </div>
+              <div layout="row" flex="100" layout-align="start center" class="content">
+                <p ng-bind="profile[7]"></p>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>LinkedIn profile (optional)</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[8]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Skype profile (optional)</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[9]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>ICA India Membership Number</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[10]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <h4>======== Education: High School =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Name of High School</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[36]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Year of Graduation</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[37]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What percentile did you achieve in 12th Standard?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[38]"></p>
+                </div>
+              </div>
+
+
+
+              <div layout="column" class="group">
+                <h4>======== Education: Graduation =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Name of University</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[14]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Discipline</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[15]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Graduation Discipline</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[45]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Year of Graduation</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[16]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Result</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[17]"></p>
+                </div>
+              </div>
+
+
+
+              <div layout="column" class="group">
+                <h4>======== Education: Post Graduation (Masters) =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Do you have a post graduate (Masters) qualification?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[18]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Name of University</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[19]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Discipline</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[20]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Masters Discipline</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[46]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Year of Graduation</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[21]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Result</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[22]"></p>
+                </div>
+              </div>
+
+
+
+              <div layout="column" class="group">
+                <h4>======== Articleship =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Where did you complete your articleship?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[23]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What was the nature of your primary clients in your articleship?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[24]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What department did you complete your articleship in primarily?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[25]"></p>
+                </div>
+              </div>
+
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Articleship department</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[47]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - final performacne rating</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[48]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What was your performance rating in your final year of your training</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[26]"></p>
+                </div>
+              </div>
+
+
+              <div layout="column" class="group">
+                <h4>======== Accountancy Qualification =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Are you a qualified Chartered Accountant?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[11]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What year did you qualify?</h4>
+                </div>http://stackoverflow.com/questions/7526849/how-do-i-change-a-filename-on-download-with-javascript
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[12]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>How many attempts did it take you to complete the final accounting exams?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[13]"></p>
+                </div>
+              </div>
+
+
+
+
+              <div layout="column" class="group">
+                <h4>======== Professional Experience =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Please select the category that best reflects your clients over the last 12-24 months</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[27]"></p>
+                </div>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Please list the primary company types that you have had exposure with (in priority order)</h4>
+                </div>
+                <div layout="row" flex="100" class="content">
+                  <p ng-repeat="itm in profile[39] track by $index" ng-bind="itm"></p>
+                </div>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - client category</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[49]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Primary Company type 1</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[50]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Primary Company type 2</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[51]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Other - Primary Company type 3</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[52]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <h4>======== Technical Experience =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>IFRS</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[40]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>US GAAP</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[41]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>IAS</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[42]"></p>
+                </div>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Sarbanes Oxley - SOX</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[43]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <h4>======== Language =========</h4>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>How would you rate your proficiency in written English?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[44]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>How would you rate your proficiency in verbal English?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[28]"></p>
+                </div>
+              </div>
+
+
+              <div layout="column" class="group">
+                <h4>======== Essay =========</h4>
+              </div>
+
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Essay</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[53]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <h4>======== Travel & Availability =========</h4>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Are you willing and available to relocate to Ireland for a minimum of 2 years?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[31]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>What is your notice period?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[32]"></p>
+                </div>
+              </div>
+
+              <div layout="column" class="group">
+                <div layout="row" flex="100" layout-align="start center" class="title">
+                  <h4>Is there any reason you know of why your Irish Visa Application could be denied?</h4>
+                </div>
+                <div layout="row" flex="100" layout-align="start center" class="content">
+                  <p ng-bind="profile[33]"></p>
+                </div>
+              </div>
+            </div>
+            <md-button ng-click="close()" class="md-primary">
+              Close
+            </md-button>
+          </div>
+        </md-content>
+      </md-content>
+    </md-tab>
+    <md-tab label="Notes">
+      <md-content class="md-padding" layout="column" layout-padding>
+        <!--<h1 class="md-display-2">Notes</h1>-->
+        <md-content layout="row" layout-wrap>
+          <md-input-container flex="100">
+            <label>Add Comment</label>
+            <textarea ng-model="comment" columns="1"></textarea>
+          </md-input-container>
+
+          <md-button ng-click="sendComment()" flex="20" class="md-primary md-raised">Save</md-button>
+        </md-content>
+        <h4>Comments for {{profile[2] + ' ' + profile[3]}}</h4>
+        <ul layout="column" class="comments">
+          <li ng-repeat="c in profile.comment | orderBy:null:true" layout="row" layout-wrap>
+            <div class="date" ng-bind="c.dateFormatted" flex="50"></div>
+            <div class="name" ng-bind="'by ' + c.name" flex="50"></div>
+            <div class="comment" ng-bind="c.comment" flex="100"></div>
+          </li>
+        </ul>
+
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>

@@ -12,6 +12,21 @@ angular.module('surveyTreeModuleApp')
 
     var candidateStatus = {};
 
+    var getLastRating = function (qMap) {
+      var ratings = qMap.ratings;
+      if (ratings && ratings[ratings.length - 1]) {
+        return ratings[ratings.length - 1].rating;
+      }
+      return 'unrated';
+    };
+
+    var getLastComment = function (qMap) {
+      var comments = qMap.comments;
+      if (comments && comments[comments.length - 1]) {
+        return comments[comments.length - 1].rating;
+      }
+      return 'unrated';
+    };
 
     this.create = function (qMap) {
       return {
@@ -19,8 +34,9 @@ angular.module('surveyTreeModuleApp')
         vRating: {value: 0, id: 'vRating'},
         firstName: qMap[2],
         familyName: qMap[3],
+        email:{ id: 'email', value: qMap.email },
         status: {value: 'pending'},
-        generalRating: {value: qMap.rating || 'unrated', id: 'generalRating', tableIgnore: true},
+        generalRating: {value: getLastRating(qMap), id: 'generalRating', tableIgnore: true},
         suitabilityRating: {value: 0, id: 'suitabilityRating', tableIgnore: true},
         articleship: qMap[23],
         accountancyQualificationYear: qMap[12],

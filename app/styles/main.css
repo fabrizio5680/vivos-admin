@@ -102,3 +102,11 @@ td.general-rating span.display:hover {
     background: rgb(255,193,7);
 }
 
+.comments .date, .comments .name {
+    font-size: 12px;
+    color: #999;
+}
+
+.comments .comment {
+    padding: 15px 0;
+}

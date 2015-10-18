@@ -8,7 +8,7 @@
  * Controller of the surveyTreeModuleApp
  */
 angular.module('surveyTreeModuleApp')
-  .controller('ProfileCtrl', function ($scope, $rootScope, $sce, $mdDialog, $log, $routeParams, apiClient, profileHandler, $mdSidenav) {
+  .controller('ProfileCtrl', function ($scope, $rootScope, $sce, $mdDialog, $log, $routeParams, apiClient, profileHandler, apiAdmin, $mdSidenav) {
 
     var getUrlPath = function () {
       return profileHandler.getProfile();
@@ -106,11 +106,33 @@ angular.module('surveyTreeModuleApp')
             p[key] = angular.isArray(value) ? value[0] : value;
           }
         });
+        p.comment = p.comment || user.comment || [];
+        formatCommentDate(p);
         $scope.profile = p;
       });
+    };
 
-      //});
+    var formatCommentDate = function (profile) {
+      try {
+        profile.comment.map(function (comment) {
+          comment.dateFormatted = moment(comment.dateAdded).format('MMMM Do YYYY, h:mm:ss a');
+        });
+      } catch (e) {}
+    };
 
+
+    $scope.sendComment = function () {
+
+      if (!$scope.comment) {
+        return;
+      }
+
+      $scope.sendingComment = true;
+      apiAdmin.comment({questionnaireId: 15, comment: $scope.comment, userId: $scope.profile.id || $scope.profile.id.value}).then(function (profile) {
+        $scope.sendingComment = false;
+        formatCommentDate(profile);
+        $scope.profile.comment = profile.comment;
+      });
     };
 
     $scope.isArray = function (value) {

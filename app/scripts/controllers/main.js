@@ -23,6 +23,8 @@ angular.module('surveyTreeModuleApp')
 
     var init = function () {
 
+      $scope.tablePopulated = false;
+
       $scope.toggleLeft = buildToggler('left');
       $scope.toggleRight = buildToggler('right');
 
@@ -58,6 +60,9 @@ angular.module('surveyTreeModuleApp')
       }, {
         name: 'Family Name',
         orderBy: 'familyName.value'
+      }, {
+        name: 'Email',
+        orderBy: 'email.value'
       }, {
         name: 'Status',
         orderBy: 'status.value'
@@ -140,6 +145,8 @@ angular.module('surveyTreeModuleApp')
         if (users.items && users.items.length > 0) {
           offset += limit;
           getCandidates(offset, limit);
+        } else {
+          $scope.tablePopulated = true;
         }
         angular.forEach($scope.persons, function (person) {
           angular.forEach(candidateStatus, function (p, id) {

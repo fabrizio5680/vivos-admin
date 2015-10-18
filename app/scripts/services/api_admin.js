@@ -26,6 +26,10 @@ angular.module('surveyTreeModuleApp')
       return api.execute(api.API_ADMIN, ['user', 'rating'], payload);
     };
 
+    this.comment = function (payload) {
+      return api.execute(api.API_ADMIN, ['user', 'comment'], payload);
+    };
+
     this.vacancies = function (payload) {
       return api.execute(api.API_ADMIN, ['vacancy', 'list'], payload);
     };
