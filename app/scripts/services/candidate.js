@@ -36,6 +36,7 @@ angular.module('surveyTreeModuleApp')
         firstName: qMap[2],
         familyName: qMap[3],
         email:{ id: 'email', value: qMap.email },
+        registered: {id: 'registered', value: qMap[1000] ? qMap[1000][0] : null},
         status: {value: 'pending'},
         generalRating: {value: getLastRating(qMap), id: 'generalRating', tableIgnore: true},
         suitabilityRating: {value: 0, id: 'suitabilityRating', tableIgnore: true},

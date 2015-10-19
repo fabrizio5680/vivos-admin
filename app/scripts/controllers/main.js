@@ -65,6 +65,9 @@ angular.module('surveyTreeModuleApp')
         name: 'Email',
         orderBy: 'email.value'
       }, {
+        name: 'Registered',
+        orderBy: 'registered.value'
+      }, {
         name: 'Status',
         orderBy: 'status.value'
       }, {
